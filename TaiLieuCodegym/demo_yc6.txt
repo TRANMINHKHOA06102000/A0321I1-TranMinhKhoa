@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 style="color: red">Xổ Số</h1>
+<p>Bạn có tin mình là người may mắn không?</p>
+<input type="button" value="Mua Vé" onclick="chonXoSo()">
+<input type="button" value="Xem Kết Quả" onclick="ketqua()">
+<p id="display1"></p>
+<p id="display2"></p>
+<p id="display3"></p>
+<p id="display4"></p>
+<p id="display5"></p>
+<p id="display6"></p>
+<script>
+    class XoSo {
+        constructor(so1, so2, so3, so4, so5, so6) {
+            this.so1 = so1;
+            this.so2 = so2;
+            this.so3 = so3;
+            this.so4 = so4;
+            this.so5 = so5;
+            this.so6 = so6;
+        }
+
+        getSo1() {
+            return this.so1;
+        }
+
+        getSo2() {
+            return this.so2;
+        }
+
+        getSo3() {
+            return this.so3;
+        }
+
+        getSo4() {
+            return this.so4;
+        }
+
+        getSo5() {
+            return this.so5;
+        }
+
+        getSo6() {
+            return this.so6;
+        }
+
+        setSo1(so1) {
+            this.so1 = so1;
+        }
+
+        setSo2(so2) {
+            this.so2 = so2;
+        }
+
+        setSo3(so3) {
+            this.so3 = so3;
+        }
+
+        setSo4(so4) {
+            this.so4 = so4;
+        }
+
+        setSo5(so5) {
+            this.so5 = so5;
+        }
+
+        setSo6(so6) {
+            this.so6 = so6;
+        }
+    }
+    let macdinh = new XoSo();
+    let chienthang = ["1", "1", "1", "1", "1", "1"];
+    let check = true;
+    let count = 0;
+    function chonXoSo() {
+        let danhsach = '<select name="Chọn số" id="1">\n'
+        for (let i = 0; i <= 99; i++) {
+            danhsach +=
+                '<option value="' + i + '">' + i + '</option>}\n'
+        }
+        danhsach += '</select>';
+        document.getElementById("display1").innerHTML = danhsach;
+
+        let danhsach2 = '<select name="Chọn số" id="2">\n'
+        for (let i = 0; i <= 99; i++) {
+            danhsach2 +=
+                '<option value="' + i + '">' + i + '</option>}\n'
+        }
+        danhsach2 += '</select>';
+        document.getElementById("display2").innerHTML = danhsach2;
+
+        let danhsach3 = '<select name="Chọn số" id="3">\n'
+        for (let i = 0; i <= 99; i++) {
+            danhsach3 +=
+                '<option value="' + i + '">' + i + '</option>}\n'
+        }
+        danhsach3 += '</select>';
+        document.getElementById("display3").innerHTML = danhsach3;
+
+        let danhsach4 = '<select name="Chọn số" id="4">\n'
+        for (let i = 0; i <= 99; i++) {
+            danhsach4 +=
+                '<option value="' + i + '">' + i + '</option>}\n'
+        }
+        danhsach4 += '</select>';
+        document.getElementById("display4").innerHTML = danhsach4;
+
+        let danhsach5 = '<select name="Chọn số" id="5">\n'
+        for (let i = 0; i <= 99; i++) {
+            danhsach5 +=
+                '<option value="' + i + '">' + i + '</option>}\n'
+        }
+        danhsach5 += '</select>';
+        document.getElementById("display5").innerHTML = danhsach5;
+
+        let danhsach6 = '<select name="Chọn số" id="6">\n'
+        for (let i = 0; i <= 99; i++) {
+            danhsach6 +=
+                '<option value="' + i + '">' + i + '</option>}\n'
+        }
+        danhsach6 += '</select>';
+        document.getElementById("display6").innerHTML = danhsach6;
+        // count++;
+    }
+    function ketqua() {
+        count++;
+        console.log(count);
+        if (count > 4){
+            alert("Bạn đã mua quá 4 lần")
+        }
+        {
+        if (check) {
+            let a = document.getElementById("1").value;
+            let b = document.getElementById("2").value;
+            let c = document.getElementById("3").value;
+            let d = document.getElementById("4").value;
+            let e = document.getElementById("5").value;
+            let f = document.getElementById("6").value;
+            macdinh.setSo1(a);
+            macdinh.setSo2(b);
+            macdinh.setSo3(c);
+            macdinh.setSo4(d);
+            macdinh.setSo5(e);
+            macdinh.setSo6(f);
+
+            if (macdinh.getSo1() === chienthang[0] && macdinh.getSo2() === chienthang[1] && macdinh.getSo3() === chienthang[2] && macdinh.getSo4() === chienthang[3] && macdinh.getSo5() === chienthang[4] && macdinh.getSo6() === chienthang[5]) {
+                alert("Chúc Mừng bạn đã trúng Giải Nhất +10.000.000VND")
+            } else {
+                if (macdinh.getSo3() === chienthang[2] && macdinh.getSo4() === chienthang[3] && macdinh.getSo5() === chienthang[4] && macdinh.getSo6() === chienthang[5]) {
+                    alert("Chúc Mừng bạn đã trúng Giải Nhì +5.000.000VND")
+                }
+                if (macdinh.getSo5() === chienthang[4] && macdinh.getSo6() === chienthang[5]) {
+                    alert("Chúc Mừng bạn đã trúng Giải Ba +1.000.000VND")
+                } else {
+                    alert("Chúc bạn may mắn lần sau")
+                }
+            }
+        }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        let arraySource = Array.from("Tôi là một đứa ngốc!!");
+
+        function fakingText() {
+            let inputText = document.getElementById("inputText").value;
+            let outputText = new Array(inputText.length);
+
+            if(inputText.length > arraySource.length){
+                outputText = ["T"];
+            }
+
+            for(let i=0; i< outputText.length; i++){
+                outputText[i] = arraySource[i];
+            }
+
+            document.getElementById("inputText").value = outputText.join("");
+            console.log(inputText);
+        }
+    </script>
+</head>
+<body>
+    <textarea style="width: 500px; height: 500px" id="inputText" onkeyup="fakingText()"></textarea>
+
+</body>
+</html>

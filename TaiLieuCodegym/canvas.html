@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<img src="https://www.w3schools.com/tags/img_the_scream.jpg" width="150" id="myImage">
+</br>
+<canvas id="myCanvas" width="400" height="400" style="border: 1px solid red">
+
+</canvas>
+
+<script>
+    function draw() {
+        let myCanvas = document.getElementById("myCanvas");
+        let x = myCanvas.getContext("2d");
+        //hinh vuong - cn
+        // x.fillStyle = "#FECE45";
+        // x.fillRect(50, 50, 200, 100);
+
+        //ve duong tron
+        // x.beginPath();
+        // x.arc(60, 60, 30, 0, 2 * Math.PI);
+        // x.stroke();
+        // x.fill();
+
+        //ve duong thang
+        // x.moveTo(0,0);
+        // x.lineTo(50,100);
+        // x.stroke();
+
+        let image = document.getElementById("myImage");
+        x.drawImage(image, 10, 10);
+    }
+
+    window.onload = draw();
+</script>
+</body>
+</html>

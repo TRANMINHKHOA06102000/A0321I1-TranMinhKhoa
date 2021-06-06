@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="addNewStudent()">Thêm mới</button>
+<p id="ketQua"></p>
+<script>
+    class Student {
+        constructor(id, name, age) {
+            this.id = id;
+            this.name = name;
+            this.age = age;
+        }
+
+        setId(id) {
+            this.id = id;
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        setAge(age) {
+            this.age = age;
+        }
+
+        getId() {
+            return this.id;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        getAge() {
+            return this.age;
+        }
+
+        toString() {
+            return "1." + this.id + "\n2." + this.name + "\n3." + this.age;
+        }
+    }
+
+    let listStudent = [];
+    listStudent.push(new Student(1, "nguyễn văn A", 18));
+    listStudent.push(new Student(2, "nguyễn văn b", 18));
+    listStudent.push(new Student(3, "nguyễn văn c", 18));
+    listStudent.push(new Student(4, "nguyễn văn d", 18));
+    listStudent.push(new Student(5, "nguyễn văn e", 18));
+
+    display(listStudent);
+
+    function addNewStudent() {
+        let id = prompt("input Id");
+        let name = prompt("input name");
+        let age = prompt("input age");
+        let student = new Student(id, name, age);
+        listStudent.push(student);
+        display(listStudent)
+    }
+
+    function deleteStudent(index) {
+        let conf = confirm("bạn có muốn xóa sinh viên: " + listStudent[index].getName());
+        if (conf) {
+            listStudent.splice(index, 1);
+        }
+        display(listStudent);
+    }
+
+    function editStudent(index) {
+        let check = true;
+        while (check) {
+            let choose = prompt("Chọn thuộc tính cấn sửa\n+" +
+                "1.ID\n" +
+                "2.Name\n" +
+                "3.Age\n" +
+                "4.Exit");
+            switch (choose) {
+                case "1":
+                    let idNew = prompt("nhập id mới");
+                    listStudent[index].setId(idNew);
+                    break;
+                case "2":
+                    let nameNeW = prompt("nhập name mới");
+                    listStudent[index].setName(nameNeW);
+                    break;
+                case "3":
+                    let ageNew = prompt("nhập tuổi mới");
+                    listStudent[index].setAge(ageNew);
+                    break;
+                default:
+                    check =false;
+            }
+        }
+        display(listStudent);
+    }
+
+    function display(list) {
+        let tableString = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <td>STT</td>\n' +
+            '        <td>ID</td>\n' +
+            '        <td>Name</td>\n' +
+            '        <td>Age</td>\n' +
+            '<td>edit</td> ' +
+            '<td>delete</td> '
+        '    </tr>';
+        for (let i = 0; i < list.length; i++) {
+            tableString += ' <tr>\n' +
+                '        <td>' + (1 + i) + '</td>\n' +
+                '        <td>' + list[i].getId() + '</td>\n' +
+                '        <td>' + list[i].getName() + '</td>\n' +
+                '        <td>' + list[i].getAge() + '</td>\n' +
+                '<td><input type="button" value="edit" onclick="editStudent(' + i + ')"></td>' +
+                '<td><input type="button" value="delete" onclick="deleteStudent(' + i + ')"></td>' +
+                '    </tr>';
+        }
+        tableString += "</table>";
+
+        document.getElementById("ketQua").innerHTML = tableString;
+    }
+</script>
+</body>
+</html>

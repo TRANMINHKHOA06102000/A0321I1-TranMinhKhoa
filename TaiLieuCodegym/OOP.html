@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*Cach 1 dung function*/
+    function DienThoai(ten, hangSX) {
+        var ten = ten;
+        var hangSX = hangSX;
+
+        this.getTen = function () {
+            return ten;
+        }
+
+        this.goiTinNhan = function (noiDung) {
+            return noiDung;
+        }
+    }
+
+    /*Dung tu khoa class*/
+    class SmartPhone {
+        constructor(name, date) {
+            this.name = name;
+            this.date = date;
+        }
+
+        // constructor(name) {
+        //     this.name = name;
+        // }
+
+        getName() {
+            return this.name;
+        }
+
+        setName(newName){
+            this.name = newName;
+        }
+
+        getDate() {
+            return this.date;
+        }
+
+        showInfo() {
+            return "Name: " + this.name + " Date: " + this.date;
+        }
+    }
+
+    let iphone = new SmartPhone("Iphone 6", 2016);
+    let samsung = new SmartPhone("SamSung S21", 2020);
+
+    iphone.setName("Iphone 7");
+    document.write(iphone.getName());
+    // document.write(samsung.getDate());
+    // document.write("Name: " + iphone.getName() + " Date: " + iphone.getDate());
+    // document.write(samsung.showInfo())
+</script>
+</body>
+</html>
