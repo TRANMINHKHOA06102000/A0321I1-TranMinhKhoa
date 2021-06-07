@@ -6,10 +6,10 @@
 </head>
 <body>
 <script>
-    s = "cabca";
-    str = s.split('');
+    let s = "cabca";
+    let str = s.split('');
     let arr = [];
-    str.forEach((element) => {
+    str.forEach(function(element) {
         if (arr.includes(element) === false) {
             arr.push(element);
         }

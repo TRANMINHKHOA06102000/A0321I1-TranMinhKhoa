@@ -23,7 +23,7 @@
         document.write("<br>")
     }
 
-    function snt(a) {
+    function soNguyenTo(a) {
         if (a < 2) {
             return false;
         }
@@ -39,7 +39,7 @@
     document.write("các số nguyên tố trong mảng: ");
     for (let i = 0; i < row; i++) {
         for (let j = 0; j < col; j++) {
-            if (snt(arr[i][j])) {
+            if (soNguyenTo(arr[i][j])) {
                 document.write(arr[i][j] + ' ');
                 dem = dem + 1;
             }
