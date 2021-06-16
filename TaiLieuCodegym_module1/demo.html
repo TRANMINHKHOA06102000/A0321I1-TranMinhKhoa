@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <h1>Quản lý sản phẩm</h1>
+    <input type="text" placeholder="nhập tên SP" id="name">
+    <input type="text" placeholder="nhập giá SP" id="price">
+    <input type="text" placeholder="nhập mô tả SP" id="description">
+    <input type="button" onclick="addNewProduct()" value="Add"><br>
+    <span> Số lượng sản phẩm</span>
+    <span id="soLuong"></span>
+    <input type="text" id="search"><button onclick="findByName()">Tìm kiếm</button>
+
+    <p id="hienThi"></p>
+    <script>
+        class Product {
+            constructor(nameProduct, price, description) {
+                this.nameProduct = nameProduct;
+                this.price = price;
+                this.description = description
+            }
+
+            setNameProduct(nameProduct) {
+                this.nameProduct = nameProduct;
+            }
+            getNameProduct() {
+                return this.nameProduct;
+            }
+            setPrice(price) {
+                this.price = price;
+            }
+            getPrice() {
+                return this.price;
+            }
+            setDescription(description) {
+                this.description = description;
+            }
+            getDescription() {
+                return this.description;
+            }
+        }
+
+        let listProduct = [];
+        display(listProduct);
+
+        function addNewProduct() {
+            let nameProduct = document.getElementById("name").value;
+            let price = document.getElementById("price").value;
+            let description = document.getElementById("description").value;
+            let product = new Product(nameProduct, price, description);
+            listProduct.push(product);
+            document.getElementById("name").value = "";
+            document.getElementById("price").value = "";
+            document.getElementById("description").value = "";
+            display(listProduct);
+        }
+
+        function display(list) {
+            let tableString = '<table border="1">\n' +
+                '<tr>\n' +
+                '<th>STT</th>' +
+                '<th>TênSP</th>' +
+                '<th>Giá</th>' +
+                '<th>Mô tả</th>' +
+                '<th>Sửa</th>' +
+                '<th>Xóa</th>' +
+                '</tr>';
+            for (let i = 0; i < list.length; i++) {
+                console.log(list);
+                tableString += '<tr>\n' +
+                    '<td>' + (i + 1) + '</td>\n' +
+                    '<td>' + list[i].getNameProduct() + '</td>\n' +
+                    '<td>' + list[i].getPrice() + '</td>\n' +
+                    '<td>' + list[i].getDescription() + '</td>\n' +
+                    '<td><input type="button" onclick="editProduct(' + i + ')" value="Sửa"></td>\n' +
+                    '<td><input type="button" onclick="deleteProduct(' + i + ')" value="Xóa"></td>\n' +
+                    '</tr>'
+            }
+            tableString += '</table>';
+            document.getElementById("hienThi").innerHTML = tableString;
+            document.getElementById("soLuong").innerHTML = list.length;
+        }
+
+        function editProduct(index) {
+            let editName = prompt("nhập vào tên SP cần sửa");
+            let editPrice = prompt("nhập vào tên SP cần sửa");
+            let editDescription = prompt("nhập vào tên SP cần sửa");
+            listProduct[index].setNameProduct(editName);
+            listProduct[index].setPrice(editPrice);
+            listProduct[index].setDescription(editDescription);
+            display(listProduct)
+        }
+
+        function deleteProduct(index) {
+            let conf = confirm("Bạn có muốn xóa sản phẩm " + listProduct[index].getNameProduct());
+            if (conf) {
+                listProduct.splice(index, 1);
+            } else {
+                alert("ban không muốn xóa");
+            }
+            display(listProduct);
+        }
+
+        function findByName() {
+            let name = document.getElementById("search").value;
+            if (name === "") {
+                display(listProduct);
+            } else {
+                let result = [];
+                for (let i = 0; i < listProduct.length; i++) {
+                    if (name === listProduct[i].getNameProduct()) {
+                        result.push(listProduct[i]);
+                    }
+                }
+                if (result.length === 0) {
+                    alert("Không tìm thấy sản phẩm");
+                } else {
+                    display(result);
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>
