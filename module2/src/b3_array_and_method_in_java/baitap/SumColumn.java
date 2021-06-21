@@ -2,14 +2,12 @@ package b3_array_and_method_in_java.baitap;
 
 import java.util.Scanner;
 
-public class SearchElementMaxInArray2D {
-    public static int maxValue(int[][] array) {
-        int max = array[0][0];
-        for (int i = 0; i < array.length; i++)
-            for (int j = 0; j < array[i].length; j++)
-                if (array[i][j] > max)
-                    max = array[i][j];
-        return max;
+public class SumColumn {
+    public static int sumColumn(int column, int[][] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++)
+            sum += arr[i][column];
+        return sum;
     }
 
     public static void main(String[] args) {
@@ -33,7 +31,14 @@ public class SearchElementMaxInArray2D {
             }
             System.out.printf("\n");
         }
-        int max = maxValue(array);
-        System.out.print("Giá trị lớn nhất của mảng: " + max);
+
+        System.out.print("\nNhập cột bạn muốn tính tổng: ");
+        int sumColumn = scanner.nextInt();
+        if (sumColumn < 0 || sumColumn >= column) {
+            System.out.print("Cột bạn nhập không tồn tại");
+        } else {
+            int sum = sumColumn(sumColumn, array);
+            System.out.print("Tổng các phần tử trong cột " + sumColumn + ": " + sum);
+        }
     }
 }
