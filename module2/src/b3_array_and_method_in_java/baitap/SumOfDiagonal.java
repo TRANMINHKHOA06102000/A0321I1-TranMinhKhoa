@@ -13,8 +13,9 @@ public class SumOfDiagonal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhập kích thước mảng: ");
-        int size=scanner.nextInt();;
-        int[][] array= new int[size][size];
+        int size = scanner.nextInt();
+        ;
+        int[][] array = new int[size][size];
         System.out.println("Nhập Phần tử: ");
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
