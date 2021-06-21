@@ -29,8 +29,6 @@ public class SumOfDiagonal {
             }
             System.out.printf("\n");
         }
-
-        int sum = sumDiagonal(array);
-        System.out.print("Tổng đường chéo chính của ma trận vuông: " + sum);
+        System.out.print("Tổng đường chéo chính của ma trận vuông: " + sumDiagonal(array));
     }
 }
