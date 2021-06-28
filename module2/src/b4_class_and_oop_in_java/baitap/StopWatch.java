@@ -29,15 +29,16 @@ public class StopWatch {
         this.endTime = endTime;
     }
 
-    public long startTime(){
+    public long startTime() {
         return startTime = System.currentTimeMillis();
     }
-    public long endTime(){
+
+    public long endTime() {
         return endTime = System.currentTimeMillis();
     }
 
-    public long getElapsedTime(){
-        long elapsedTime= endTime - startTime;
-        return elapsedTime ;
+    public long getElapsedTime() {
+        long elapsedTime = endTime - startTime;
+        return elapsedTime;
     }
 }
