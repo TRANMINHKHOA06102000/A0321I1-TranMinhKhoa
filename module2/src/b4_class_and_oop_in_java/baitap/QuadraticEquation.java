@@ -2,7 +2,9 @@ package b4_class_and_oop_in_java.baitap;
 
 
 public class QuadraticEquation {
-    private double a, b, c;
+    private double a;
+    private double b;
+    private double c;
 
     public QuadraticEquation() {
     }
@@ -13,11 +15,16 @@ public class QuadraticEquation {
         this.c = c;
     }
 
+    public double getDiscriminant() {
+        double delta = b * b - 4 * a * c;
+        return delta;
+    }
+
     public double getA() {
         return a;
     }
 
-    public void setA(double a) {
+    public void setA(int a) {
         this.a = a;
     }
 
@@ -25,7 +32,7 @@ public class QuadraticEquation {
         return b;
     }
 
-    public void setB(double b) {
+    public void setB(int b) {
         this.b = b;
     }
 
@@ -33,13 +40,8 @@ public class QuadraticEquation {
         return c;
     }
 
-    public void setC(double c) {
+    public void setC(int c) {
         this.c = c;
-    }
-
-    public double getDiscriminant() {
-        double delta = b * b - 4 * a * c;
-        return delta;
     }
 
     public double getRoot1() {
@@ -50,5 +52,15 @@ public class QuadraticEquation {
     public double getRoot2() {
         double r2 = ((-b - Math.sqrt(getDiscriminant())) / (2 * a));
         return r2;
+    }
+
+    public double getRoot3() {
+        double r3 = -b / (2 * a);
+        return r3;
+    }
+
+    public double getRoot4() {
+        double r4 = -c / b;
+        return r4;
     }
 }

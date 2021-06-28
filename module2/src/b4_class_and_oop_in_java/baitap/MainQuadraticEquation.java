@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class MainQuadraticEquation {
     public static void main(String[] args) {
         double a, b, c;
-        double x1, x2, x;
+        double x1, x2, x3, x4, delta;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập vào a:");
         a = scanner.nextInt();
@@ -14,15 +14,29 @@ public class MainQuadraticEquation {
         System.out.println("Nhập vào c:");
         c = scanner.nextInt();
         QuadraticEquation quadraticEquation = new QuadraticEquation(a, b, c);
-        x1 = quadraticEquation.getRoot1();
-        x2 = quadraticEquation.getRoot2();
-        x = -b / (2 * a);
-        if (quadraticEquation.getDiscriminant() < 0) {
-            System.out.println("The equation has no roots");
-        } else if (quadraticEquation.getDiscriminant() == 0) {
-            System.out.println("double karmic equation: x1=x2=x= " + x);
+        if (a == 0) {
+            if (b == 0) {
+                if (c == 0) {
+                    System.out.println("Phuong trinh vo so nghiem");
+                } else {
+                    System.out.println("Phuong trinh vo nghiem");
+                }
+            } else {
+                x4 = quadraticEquation.getRoot4();
+                System.out.println("Phuong trinh co nghiem=" + x4);
+            }
         } else {
-            System.out.println("the equation has 2 karma: x1= " + x1 + " and x2=" + x2);
+            x1 = quadraticEquation.getRoot1();
+            x2 = quadraticEquation.getRoot2();
+            x3 = quadraticEquation.getRoot3();
+            delta = quadraticEquation.getDiscriminant();
+            if (delta < 0) {
+                System.out.println("Phương trình vô nghiệm");
+            } else if (delta == 0) {
+                System.out.println("Phương trình có nghiệm kép =" + x3);
+            } else {
+                System.out.println("Phương trình co 2 nghiệm :\n x1=" + x1 + " \n x2=" + x2);
+            }
         }
     }
 }
