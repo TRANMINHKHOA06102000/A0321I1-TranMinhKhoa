@@ -1,4 +1,4 @@
-package b4_class_and_oop_in_java.baitap;
+package b4_class_and_oop_in_java.baitap.fan;
 
 public class MainFan {
     public static void main(String[] args) {
