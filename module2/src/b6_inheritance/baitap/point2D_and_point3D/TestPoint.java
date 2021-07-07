@@ -8,6 +8,7 @@ public class TestPoint {
         for (int i = 0; i < arr1.length; i++) {
             System.out.print(arr1[i] + "\t");
         }
+
         System.out.println(point2D);
 
         Point3D point3D = new Point3D(point2D.getX(), point2D.getY(), 4);
