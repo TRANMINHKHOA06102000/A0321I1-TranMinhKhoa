@@ -12,5 +12,6 @@ public class TestTriangle {
         System.out.println(triangle);
 
         System.out.println("Perimeter = "+triangle.getPerimeter()+", Area = "+triangle.getArea());
+
     }
 }
