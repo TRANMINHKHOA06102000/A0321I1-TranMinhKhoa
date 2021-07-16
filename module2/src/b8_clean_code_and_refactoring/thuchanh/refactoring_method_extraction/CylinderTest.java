@@ -1,4 +1,4 @@
-package b8_clean_code_and_refactoring.thuchanh.refactoring_method_extraction.test;
+package b8_clean_code_and_refactoring.thuchanh.refactoring_method_extraction;
 
 import b8_clean_code_and_refactoring.thuchanh.refactoring_method_extraction.Cylinder;
 import org.junit.jupiter.api.DisplayName;

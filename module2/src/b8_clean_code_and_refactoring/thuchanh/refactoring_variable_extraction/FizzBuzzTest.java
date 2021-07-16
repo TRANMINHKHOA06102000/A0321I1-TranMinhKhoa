@@ -1,4 +1,4 @@
-package b8_clean_code_and_refactoring.thuchanh.refactoring_variable_extraction.test;
+package b8_clean_code_and_refactoring.thuchanh.refactoring_variable_extraction;
 
 import b8_clean_code_and_refactoring.thuchanh.refactoring_variable_extraction.FizzBuzz;
 import org.junit.jupiter.api.Test;
