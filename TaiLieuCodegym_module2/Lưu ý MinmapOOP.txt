@@ -1,0 +1,8 @@
+1. Nested class? static nested class và inner class
+2. Class tiện ích là class có toàn bộ thuộc tính và phương thức là static
+3. 2 biến cục bộ có cùng tên không thể tồn tại trong cùng 1 hàm. Mặc dù có thể 1 biến bên ngoài if, for,.. 1 biến bên trong if, for,..
+4. Thuộc tính khai báo getter, setter thì nó khác gì khi chúng ta khai báo public.
+5. Lớp Object là lớp cha của tất cả các lớp trong Java
+6. Phần static binding: gắn kết tĩnh. VD: Person person = new Person();
+7. Ép kiểu tường minh: ép kiểu từ cha -> con. implicit and explicit
+8. Thuộc tính mặc định của interface là public static final.
