@@ -1,4 +1,4 @@
-package b11_stack_queue.thuchanh.queue_using_linkedlist;
+package b11_stack_queue.thuchanh.implement_queue_using_linkedlist;
 
 public class MyLinkedListQueue {
     public class Node {

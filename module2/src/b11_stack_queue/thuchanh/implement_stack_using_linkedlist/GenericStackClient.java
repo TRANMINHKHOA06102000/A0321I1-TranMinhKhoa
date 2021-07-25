@@ -1,4 +1,4 @@
-package b11_stack_queue.thuchanh.stack_using_linkedlist;
+package b11_stack_queue.thuchanh.implement_stack_using_linkedlist;
 
 public class GenericStackClient {
     private static void stackOfIStrings() {
