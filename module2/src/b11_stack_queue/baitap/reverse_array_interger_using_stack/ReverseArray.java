@@ -6,7 +6,7 @@ import java.util.Stack;
 public class ReverseArray {
     public static void main(String[] args) {
         Stack<Integer> stackInt = new Stack<>();
-        int[] intArray = {1, 2, 3, 4, 5};
+        int[] intArray = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         for (int i = 0; i < intArray.length; i++) {
             stackInt.push(intArray[i]);
         }
@@ -19,7 +19,7 @@ public class ReverseArray {
         }
         System.out.println("\nMảng sau khi đảo ngược: ");
         for (int i = 0; i < intArray.length; i++) {
-            System.out.print(+intArray[i] + "\t");
+            System.out.print(intArray[i] + "\t");
         }
         //đảo ngược nếu là chuỗi
         /*System.out.println("\n ----------------------------------------------------------------------");
