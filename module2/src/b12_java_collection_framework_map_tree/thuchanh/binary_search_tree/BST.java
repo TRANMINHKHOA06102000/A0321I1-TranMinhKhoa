@@ -36,7 +36,7 @@ public class BST<E extends Comparable<E>> extends AbstractTree<E> {
                 parent.right = createNewNode(e);
         }
         size++;
-        return true; /*element inserted successfully*/
+        return true;
     }
 
     private TreeNode<E> createNewNode(E e) {
