@@ -1,10 +1,16 @@
 package case_study.controllers;
 
+import case_study.services.CustomerServiceImpl;
+import case_study.services.EmployeeServiceImpl;
+
 import java.util.Scanner;
 
 public class FuramaController {
     static Scanner input = new Scanner(System.in);
-    public static void displayMainMenu() {
+    EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+    CustomerServiceImpl customerService = new CustomerServiceImpl();
+
+    public void displayMainMenu() {
         System.out.println("---------- MAIN MENU ----------");
         System.out.println("1. Employee Management");
         System.out.println("2. Customer Management");
@@ -14,7 +20,7 @@ public class FuramaController {
         System.out.println("6. Exit");
         System.out.println("------------------------------");
         System.out.print("Your choose: ");
-        String choose =input.nextLine();
+        String choose = input.nextLine();
 
         switch (choose) {
             case "1": {
@@ -49,7 +55,8 @@ public class FuramaController {
             }
         }
     }
-    public static void employee(){
+
+    public void employee() {
         System.out.println("---------- Employee Management ----------");
         System.out.println("1. Display list employees");
         System.out.println("2. Add new employee");
@@ -57,24 +64,24 @@ public class FuramaController {
         System.out.println("4. Return main menu");
         System.out.println("5. Exit");
         System.out.println("------------------------------");
-        /*System.out.print("Your choose: ");
+        System.out.print("Your choose: ");
         String choose = input.nextLine();
 
         switch (choose) {
             case "1": {
-
+                employeeService.display();
                 break;
             }
             case "2": {
-
+                employeeService.addNew();
                 break;
             }
             case "3": {
-
+                employeeService.edit();
                 break;
             }
             case "4": {
-
+                employee();
                 break;
             }
             case "5": {
@@ -87,9 +94,10 @@ public class FuramaController {
                 input.nextLine();
                 employee();
             }
-        }*/
+        }
     }
-    public static void customer(){
+
+    public void customer() {
         System.out.println("---------- Customer Management ----------");
         System.out.println("1. Display list customers");
         System.out.println("2. Add new customer");
@@ -97,24 +105,24 @@ public class FuramaController {
         System.out.println("4. Return main menu");
         System.out.println("5. Exit");
         System.out.println("------------------------------");
-        /*System.out.print("Your choose: ");
+        System.out.print("Your choose: ");
         String choose = input.nextLine();
 
         switch (choose) {
             case "1": {
-
+                customerService.display();
                 break;
             }
             case "2": {
-
+                customerService.addNew();
                 break;
             }
             case "3": {
-
+                customerService.edit();
                 break;
             }
             case "4": {
-
+                customer();
                 break;
             }
             case "5": {
@@ -127,9 +135,10 @@ public class FuramaController {
                 input.nextLine();
                 customer();
             }
-        }*/
+        }
     }
-    public static void facility(){
+
+    public void facility() {
         System.out.println("---------- Facility Management ----------");
         System.out.println("1. Display list facility");
         System.out.println("2. Add new facility");
@@ -169,7 +178,8 @@ public class FuramaController {
             }
         }*/
     }
-    public static void booking(){
+
+    public void booking() {
         System.out.println("---------- Booking Management ----------");
         System.out.println("1. Add new booking");
         System.out.println("2. Display list booking");
@@ -218,7 +228,8 @@ public class FuramaController {
             }
         }*/
     }
-    public static void promotion(){
+
+    public void promotion() {
         System.out.println("---------- Promotion Management ----------");
         System.out.println("1. Display list customers use service");
         System.out.println("2. Display list customers get voucher");
