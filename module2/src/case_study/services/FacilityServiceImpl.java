@@ -139,7 +139,7 @@ public class FacilityServiceImpl implements FacilityService {
     public void displayFacilityNeedingMaintenance() {
         System.out.println("--List Facility Needing Maintenance--");
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
-            if (facilityIntegerEntry.getValue() == 4) {
+            if (facilityIntegerEntry.getValue() == 5) {
                 System.out.println(facilityIntegerEntry);
             }
         }
