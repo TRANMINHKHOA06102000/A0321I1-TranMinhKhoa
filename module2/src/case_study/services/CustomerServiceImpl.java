@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
-    private static LinkedList<Customer> customerLinkedList;
+    private static final LinkedList<Customer> customerLinkedList;
     static Scanner scanner = new Scanner(System.in);
 
     static {
@@ -15,7 +15,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void display() {
-        System.out.println("--Danh sách khách hàng--\n");
+        System.out.println("--List Customer--\n");
         for (Customer customer : customerLinkedList) {
             System.out.println(customer);
         }
@@ -54,7 +54,7 @@ public class CustomerServiceImpl implements CustomerService {
         scanner.skip("\\R");
         System.out.println("Input email customer: ");
         String email = scanner.nextLine();
-        System.out.println("Input typeOfGuest customer: ");
+        System.out.println("Input typeOfGuest customer(Diamond, Platinium, Gold, Silver, Member): ");
         String typeOfGuest = scanner.nextLine();
         System.out.println("Input address customer: ");
         String address = scanner.nextLine();
@@ -131,7 +131,7 @@ public class CustomerServiceImpl implements CustomerService {
                     break;
                 case 7:
                     scanner.skip("\\R");
-                    System.out.println("Input new typeOfGuest customer: ");
+                    System.out.println("Input new typeOfGuest customer(Diamond, Platinium, Gold, Silver, Member): ");
                     String newTypeOfGuest = scanner.nextLine();
                     customer.setTypeOfGuest(newTypeOfGuest);
                     System.out.println("Edit " + customer + " successful");

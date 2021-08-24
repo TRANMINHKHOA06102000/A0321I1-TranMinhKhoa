@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EmployeeServiceImpl implements EmployeeService {
-    private static ArrayList<Employee> employeeArrayList;
+    private static final ArrayList<Employee> employeeArrayList;
     static Scanner scanner = new Scanner(System.in);
 
     static {
@@ -15,7 +15,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void display() {
-        System.out.println("--Danh sách nhân viên--\n");
+        System.out.println("--List Employee--\n");
         for (Employee employee : employeeArrayList) {
             System.out.println(employee);
         }
@@ -54,9 +54,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         scanner.skip("\\R");
         System.out.println("Input email employee: ");
         String email = scanner.nextLine();
-        System.out.println("Input level employee: ");
+        System.out.println("Input level employee(Intermediate, College, Undergraduate and Graduate): ");
         String level = scanner.nextLine();
-        System.out.println("Input location employee: ");
+        System.out.println("Input location employee(Receptionist, waiter, specialist, supervisor, manager, director): ");
         String location = scanner.nextLine();
         System.out.println("Input salary employee: ");
         double salary = scanner.nextDouble();
@@ -134,14 +134,14 @@ public class EmployeeServiceImpl implements EmployeeService {
                     break;
                 case 7:
                     scanner.skip("\\R");
-                    System.out.println("Input new level employee: ");
+                    System.out.println("Input new level employee(Intermediate, College, Undergraduate and Graduate): ");
                     String newLevel = scanner.nextLine();
                     employee.setLevel(newLevel);
                     System.out.println("Edit " + employee + " successful");
                     break;
                 case 8:
                     scanner.skip("\\R");
-                    System.out.println("Input new location employee: ");
+                    System.out.println("Input new location employee(Receptionist, waiter, specialist, supervisor, manager, director): ");
                     String newLocation = scanner.nextLine();
                     employee.setLocation(newLocation);
                     System.out.println("Edit " + employee + " successful");
