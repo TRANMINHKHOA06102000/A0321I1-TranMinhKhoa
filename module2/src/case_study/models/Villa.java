@@ -2,20 +2,20 @@ package case_study.models;
 
 public class Villa extends Facility {
     private String standardRoom;
-    private Float areaPool;
+    private int areaPool;
     private int numberOfFloors;
 
     public Villa() {
     }
 
-    public Villa(String standardRoom, Float areaPool, int numberOfFloors) {
+    public Villa(String standardRoom, int areaPool, int numberOfFloors) {
         this.standardRoom = standardRoom;
         this.areaPool = areaPool;
         this.numberOfFloors = numberOfFloors;
     }
 
-    public Villa(String name, Float area, double price, int amount, String typeRents, String standardRoom, Float areaPool, int numberOfFloors) {
-        super(name, area, price, amount, typeRents);
+    public Villa(String id,String name, int area, double price, int amount, String typeRents, String standardRoom, int areaPool, int numberOfFloors) {
+        super(id,name, area, price, amount, typeRents);
         this.standardRoom = standardRoom;
         this.areaPool = areaPool;
         this.numberOfFloors = numberOfFloors;
@@ -29,11 +29,11 @@ public class Villa extends Facility {
         this.standardRoom = standardRoom;
     }
 
-    public Float getAreaPool() {
+    public int getAreaPool() {
         return areaPool;
     }
 
-    public void setAreaPool(Float areaPool) {
+    public void setAreaPool(int areaPool) {
         this.areaPool = areaPool;
     }
 

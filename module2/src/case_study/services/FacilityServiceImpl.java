@@ -18,7 +18,7 @@ public class FacilityServiceImpl implements FacilityService {
     public void display() {
         System.out.println("--List Facility--");
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
-            System.out.println(facilityIntegerEntry.toString());
+            System.out.println("Service "+ facilityIntegerEntry.getKey()+ "number of times rented"+ facilityIntegerEntry.getValue());
         }
     }
 
@@ -59,11 +59,20 @@ public class FacilityServiceImpl implements FacilityService {
         }
     }
 
+    @Override
     public void addNewRoom() {
+        String id;
+        do {
+            System.out.println("Input Id: ");
+            id = scanner.nextLine();
+            if (searchById(id) != null) {
+                System.out.println("id already exists");
+            }
+        } while (searchById(id) != null);
         System.out.println("Input name: ");
         String name = scanner.nextLine();
         System.out.println("Input area: ");
-        float area = Float.parseFloat(scanner.nextLine());
+        int area = Integer.parseInt(scanner.nextLine());
         System.out.println("Input price: ");
         double price = Double.parseDouble(scanner.nextLine());
         System.out.println("Input amount: ");
@@ -72,19 +81,26 @@ public class FacilityServiceImpl implements FacilityService {
         String typeRents = scanner.nextLine();
         System.out.println("Input freeService: ");
         String freeService = scanner.nextLine();
-        Room room = new Room(name, area, price, amount, typeRents, freeService);
+        Room room = new Room(id,name, area, price, amount, typeRents, freeService);
 
-        System.out.print("Enter the number of uses: ");
-        int times = Integer.parseInt(scanner.nextLine());
-        facilityIntegerMap.put(room, times);
+        facilityIntegerMap.put(room, 0);
         System.out.println("Add " + room + " successful");
     }
 
+    @Override
     public void addNewHouse() {
+        String id;
+        do {
+            System.out.println("Input Id: ");
+            id = scanner.nextLine();
+            if (searchById(id) != null) {
+                System.out.println("id already exists");
+            }
+        } while (searchById(id) != null);
         System.out.println("Input name: ");
         String name = scanner.nextLine();
         System.out.println("Input area: ");
-        float area = Float.parseFloat(scanner.nextLine());
+        int area = Integer.parseInt(scanner.nextLine());
         System.out.println("Input price: ");
         double price = Double.parseDouble(scanner.nextLine());
         System.out.println("Input amount: ");
@@ -95,21 +111,26 @@ public class FacilityServiceImpl implements FacilityService {
         String standardRoom = scanner.nextLine();
         System.out.println("Input numberOfFloors: ");
         int numberOfFloors = Integer.parseInt(scanner.nextLine());
-        House house = new House(name, area, price, amount, typeRents, standardRoom, numberOfFloors);
+        House house = new House(id,name, area, price, amount, typeRents, standardRoom, numberOfFloors);
 
-        System.out.print("Enter the number of uses: ");
-        int times = Integer.parseInt(scanner.nextLine());
-        facilityIntegerMap.put(house, times);
+        facilityIntegerMap.put(house, 0);
         System.out.println("Add " + house + " successful");
     }
 
+    @Override
     public void addNewVilla() {
-        //\\R để xuống dòng
-//        scanner.skip("\\R");
+        String id;
+        do {
+            System.out.println("Input Id: ");
+            id = scanner.nextLine();
+            if (searchById(id) != null) {
+                System.out.println("id already exists");
+            }
+        } while (searchById(id) != null);
         System.out.println("Input name: ");
         String name = scanner.nextLine();
         System.out.println("Input area: ");
-        float area = Float.parseFloat(scanner.nextLine());
+        int area = Integer.parseInt(scanner.nextLine());
         System.out.println("Input price: ");
         double price = Double.parseDouble(scanner.nextLine());
         System.out.println("Input amount: ");
@@ -119,17 +140,21 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("Input standardRoom: ");
         String standardRoom = scanner.nextLine();
         System.out.println("Input areaPool: ");
-        float areaPool = Float.parseFloat(scanner.nextLine());
+        int areaPool = Integer.parseInt(scanner.nextLine());
         System.out.println("Input numberOfFloors: ");
         int numberOfFloors = Integer.parseInt(scanner.nextLine());
-        Villa villa = new Villa(name, area, price, amount, typeRents, standardRoom, areaPool, numberOfFloors);
-
-        System.out.print("Enter the number of uses: ");
-        int times = Integer.parseInt(scanner.nextLine());
-        facilityIntegerMap.put(villa, times);
+        Villa villa = new Villa(id,name, area, price, amount, typeRents, standardRoom, areaPool, numberOfFloors);
+        facilityIntegerMap.put(villa, 0);
         System.out.println("Add " + villa + " successful");
     }
-
+    public Facility searchById(String id) {
+        for (Map.Entry<Facility,Integer> facilityIntegerEntry: facilityIntegerMap.entrySet()) {
+            if (id.equals(facilityIntegerEntry.getKey().getId())) {
+                return facilityIntegerEntry.getKey();
+            }
+        }
+        return null;
+    }
     @Override
     public void edit() {
 
@@ -140,7 +165,7 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("--List Facility Needing Maintenance--");
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
             if (facilityIntegerEntry.getValue() == 5) {
-                System.out.println(facilityIntegerEntry);
+                System.out.println("Service "+ facilityIntegerEntry.getKey()+ "number of times rented"+ facilityIntegerEntry.getValue());
             }
         }
     }

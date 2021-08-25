@@ -1,8 +1,9 @@
 package case_study.models;
 
 public abstract class Facility {
+    private String id;
     private String name;
-    private Float area;
+    private int area;
     private double price;
     private int amount;
     private String typeRents;
@@ -10,12 +11,21 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String name, Float area, double price, int amount, String typeRents) {
+    public Facility(String id,String name, int area, double price, int amount, String typeRents) {
+        this.id = id;
         this.name = name;
         this.area = area;
         this.price = price;
         this.amount = amount;
         this.typeRents = typeRents;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -26,11 +36,11 @@ public abstract class Facility {
         this.name = name;
     }
 
-    public Float getArea() {
+    public int getArea() {
         return area;
     }
 
-    public void setArea(Float area) {
+    public void setArea(int area) {
         this.area = area;
     }
 
@@ -61,7 +71,8 @@ public abstract class Facility {
     @Override
     public String toString() {
         return "Facility{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", area=" + area +
                 ", price=" + price +
                 ", amount=" + amount +

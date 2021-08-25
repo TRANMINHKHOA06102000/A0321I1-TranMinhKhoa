@@ -1,16 +1,11 @@
 package case_study.controllers;
 
-import case_study.services.CustomerServiceImpl;
-import case_study.services.EmployeeServiceImpl;
-import case_study.services.FacilityServiceImpl;
+import case_study.services.*;
 
 import java.util.Scanner;
 
 public class FuramaController {
     static Scanner input = new Scanner(System.in);
-    EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
-    CustomerServiceImpl customerService = new CustomerServiceImpl();
-    FacilityServiceImpl facilityService = new FacilityServiceImpl();
 
     public void displayMainMenu() {
         System.out.println("---------- MAIN MENU ----------");
@@ -59,6 +54,7 @@ public class FuramaController {
     }
 
     public void employee() {
+        EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
         System.out.println("---------- Employee Management ----------");
         System.out.println("1. Display list employees");
         System.out.println("2. Add new employee");
@@ -72,18 +68,21 @@ public class FuramaController {
         switch (choose) {
             case "1": {
                 employeeService.display();
+                employee();
                 break;
             }
             case "2": {
                 employeeService.addNew();
+                employee();
                 break;
             }
             case "3": {
                 employeeService.edit();
+                employee();
                 break;
             }
             case "4": {
-                employee();
+                displayMainMenu();
                 break;
             }
             case "5": {
@@ -100,6 +99,7 @@ public class FuramaController {
     }
 
     public void customer() {
+        CustomerServiceImpl customerService = new CustomerServiceImpl();
         System.out.println("---------- Customer Management ----------");
         System.out.println("1. Display list customers");
         System.out.println("2. Add new customer");
@@ -113,18 +113,21 @@ public class FuramaController {
         switch (choose) {
             case "1": {
                 customerService.display();
+                customer();
                 break;
             }
             case "2": {
                 customerService.addNew();
+                customer();
                 break;
             }
             case "3": {
                 customerService.edit();
+                customer();
                 break;
             }
             case "4": {
-                customer();
+                displayMainMenu();
                 break;
             }
             case "5": {
@@ -141,6 +144,7 @@ public class FuramaController {
     }
 
     public void facility() {
+        FacilityServiceImpl facilityService = new FacilityServiceImpl();
         System.out.println("---------- Facility Management ----------");
         System.out.println("1. Display list facility");
         System.out.println("2. Add new facility");
@@ -154,18 +158,21 @@ public class FuramaController {
         switch (choose) {
             case "1": {
                 facilityService.display();
+                facility();
                 break;
             }
             case "2": {
                 facilityService.addNew();
+                facility();
                 break;
             }
             case "3": {
                 facilityService.displayFacilityNeedingMaintenance();
+                facility();
                 break;
             }
             case "4": {
-                facility();
+                displayMainMenu();
                 break;
             }
             case "5": {
@@ -182,6 +189,8 @@ public class FuramaController {
     }
 
     public void booking() {
+        BookingServiceImpl bookingService = new BookingServiceImpl();
+        ContractServiceImpl contractService= new ContractServiceImpl();
         System.out.println("---------- Booking Management ----------");
         System.out.println("1. Add new booking");
         System.out.println("2. Display list booking");
@@ -190,32 +199,36 @@ public class FuramaController {
         System.out.println("5. Edit contracts");
         System.out.println("6. Return main menu");
         System.out.println("------------------------------");
-        /*System.out.print("Your choose: ");
+        System.out.print("Your choose: ");
         String choose = input.nextLine();
 
         switch (choose) {
             case "1": {
-
+                bookingService.addNew();
+                booking();
                 break;
             }
             case "2": {
-
+                bookingService.display();
+                booking();
                 break;
             }
             case "3": {
-
+                contractService.addNew();
+                booking();
                 break;
             }
             case "4": {
-
+                contractService.display();
+                booking();
                 break;
             }
             case "5": {
-
+                contractService.edit();
                 break;
             }
             case "6": {
-
+                displayMainMenu();
                 break;
             }
             case "7": {
@@ -228,7 +241,7 @@ public class FuramaController {
                 input.nextLine();
                 booking();
             }
-        }*/
+        }
     }
 
     public void promotion() {

@@ -3,10 +3,11 @@ package case_study.services;
 import case_study.models.Customer;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
-    private static final LinkedList<Customer> customerLinkedList;
+    private static final List<Customer> customerLinkedList;
     static Scanner scanner = new Scanner(System.in);
 
     static {
