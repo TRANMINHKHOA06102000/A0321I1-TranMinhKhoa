@@ -1,6 +1,8 @@
 package case_study.models;
 
-public class House extends Facility {
+import java.io.Serializable;
+
+public class House extends Facility implements Serializable {
     private String standardRoom;
     private int numberOfFloors;
 

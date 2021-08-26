@@ -1,6 +1,8 @@
 package case_study.models;
 
-public class Customer extends Person {
+import java.io.Serializable;
+
+public class Customer extends Person implements Serializable {
     private String typeOfGuest;
     private String address;
 

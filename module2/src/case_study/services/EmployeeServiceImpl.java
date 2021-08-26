@@ -1,20 +1,25 @@
 package case_study.services;
 
 import case_study.models.Employee;
+import case_study.utils.ReadAndWriter;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeServiceImpl implements EmployeeService {
-    private static final ArrayList<Employee> employeeArrayList;
+    private static List<Employee> employeeArrayList;
     static Scanner scanner = new Scanner(System.in);
-
+    String pathFile = "D:\\A0321I1-TranMinhKhoa\\module2\\src\\case_study\\data\\employee.csv";
     static {
         employeeArrayList = new ArrayList<>();
+        employeeArrayList.add(new Employee("1","khoa","06/10/2000","Nam",212,
+                135,"khoa4755","aa","bb",2000));
     }
 
     @Override
     public void display() {
+        employeeArrayList= (List<Employee>) ReadAndWriter.read(pathFile);
         System.out.println("--List Employee--\n");
         for (Employee employee : employeeArrayList) {
             System.out.println(employee);
@@ -72,6 +77,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = new Employee(id, name, dateOfBirth, gender, numberCMND, phone, email, level, location, salary);
         employeeArrayList.add(employee);
         System.out.println("Add " + employee + " successful");
+
+        ReadAndWriter.write(employeeArrayList,pathFile);
     }
 
     @Override
@@ -109,18 +116,21 @@ public class EmployeeServiceImpl implements EmployeeService {
                     String newName = scanner.nextLine();
                     employee.setName(newName);
                     System.out.println("Edit " + employee + " successful");
+                    ReadAndWriter.write(employeeArrayList,pathFile);
                     break;
                 case 2:
                     System.out.println("Input new dateOfBirth employee: ");
                     String newDateOfBirth = scanner.nextLine();
                     employee.setDateOfBirth(newDateOfBirth);
                     System.out.println("Edit " + employee + " successful");
+                    ReadAndWriter.write(employeeArrayList,pathFile);
                     break;
                 case 3:
                     System.out.println("Input new gender employee: ");
                     String newGender = scanner.nextLine();
                     employee.setGender(newGender);
                     System.out.println("Edit " + employee + " successful");
+                    ReadAndWriter.write(employeeArrayList,pathFile);
                     break;
                 case 4:
                     System.out.println("Input new numberCMND employee: ");
@@ -132,6 +142,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                     }
                     employee.setNumberCMND(newNumberCMND);
                     System.out.println("Edit " + employee + " successful");
+                    ReadAndWriter.write(employeeArrayList,pathFile);
                     break;
                 case 5:
                     System.out.println("Input new phone employee: ");
@@ -143,24 +154,28 @@ public class EmployeeServiceImpl implements EmployeeService {
                     }
                     employee.setPhone(newPhone);
                     System.out.println("Edit " + employee + " successful");
+                    ReadAndWriter.write(employeeArrayList,pathFile);
                     break;
                 case 6:
                     System.out.println("Input new email employee: ");
                     String newEmail = scanner.nextLine();
                     employee.setEmail(newEmail);
                     System.out.println("Edit " + employee + " successful");
+                    ReadAndWriter.write(employeeArrayList,pathFile);
                     break;
                 case 7:
                     System.out.println("Input new level employee(Intermediate, College, Undergraduate and Graduate): ");
                     String newLevel = scanner.nextLine();
                     employee.setLevel(newLevel);
                     System.out.println("Edit " + employee + " successful");
+                    ReadAndWriter.write(employeeArrayList,pathFile);
                     break;
                 case 8:
                     System.out.println("Input new location employee(Receptionist, waiter, specialist, supervisor, manager, director): ");
                     String newLocation = scanner.nextLine();
                     employee.setLocation(newLocation);
                     System.out.println("Edit " + employee + " successful");
+                    ReadAndWriter.write(employeeArrayList,pathFile);
                     break;
                 case 9:
                     System.out.println("Input new salary employee: ");
@@ -172,6 +187,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                     }
                     employee.setSalary(newSalary);
                     System.out.println("Edit " + employee + " successful");
+                    ReadAndWriter.write(employeeArrayList,pathFile);
                     break;
                 default:
                     System.out.println("Please enter options: 1 -> 9");

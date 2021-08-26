@@ -1,6 +1,8 @@
 package case_study.models;
 
-public class Contract {
+import java.io.Serializable;
+
+public class Contract implements Serializable {
     private int numberContracts;
     private String idBooking;
     private double advanceDepositAmount;

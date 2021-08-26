@@ -1,14 +1,19 @@
 package case_study.services;
 
 import case_study.models.*;
+import case_study.utils.ReadAndWriter;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class FacilityServiceImpl implements FacilityService {
-    private static final Map<Facility, Integer> facilityIntegerMap;
+    private static Map<Facility, Integer> facilityIntegerMap;
     static Scanner scanner = new Scanner(System.in);
+    String pathFileVilla="D:\\A0321I1-TranMinhKhoa\\module2\\src\\case_study\\data\\villa.csv";
+    String pathFileHouse="D:\\A0321I1-TranMinhKhoa\\module2\\src\\case_study\\data\\house.csv";
+    String pathFileRoom="D:\\A0321I1-TranMinhKhoa\\module2\\src\\case_study\\data\\room.csv";
 
     static {
         facilityIntegerMap = new LinkedHashMap<>();
@@ -16,7 +21,10 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void display() {
-        System.out.println("--List Facility--");
+        facilityIntegerMap= (Map<Facility, Integer>) ReadAndWriter.read(pathFileVilla);
+        facilityIntegerMap= (Map<Facility, Integer>) ReadAndWriter.read(pathFileRoom);
+        facilityIntegerMap= (Map<Facility, Integer>) ReadAndWriter.read(pathFileHouse);
+        System.out.println("--List Facility--\n");
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
             System.out.println("Service " + facilityIntegerEntry.getKey() + "number of times rented" + facilityIntegerEntry.getValue());
         }
@@ -95,6 +103,7 @@ public class FacilityServiceImpl implements FacilityService {
 
         facilityIntegerMap.put(room, 0);
         System.out.println("Add " + room + " successful");
+        ReadAndWriter.write((Collection) facilityIntegerMap,pathFileRoom);
     }
 
     @Override
@@ -132,6 +141,7 @@ public class FacilityServiceImpl implements FacilityService {
 
         facilityIntegerMap.put(house, 0);
         System.out.println("Add " + house + " successful");
+        ReadAndWriter.write((Collection) facilityIntegerMap,pathFileHouse);
     }
 
     @Override
@@ -170,6 +180,7 @@ public class FacilityServiceImpl implements FacilityService {
         Villa villa = new Villa(id, name, area, price, amount, typeRents, standardRoom, areaPool, numberOfFloors);
         facilityIntegerMap.put(villa, 0);
         System.out.println("Add " + villa + " successful");
+        ReadAndWriter.write((Collection) facilityIntegerMap,pathFileVilla);
     }
 
     public Facility searchById(String id) {
@@ -188,7 +199,10 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void displayFacilityNeedingMaintenance() {
-        System.out.println("--List Facility Needing Maintenance--");
+        facilityIntegerMap= (Map<Facility, Integer>) ReadAndWriter.read(pathFileVilla);
+        facilityIntegerMap= (Map<Facility, Integer>) ReadAndWriter.read(pathFileRoom);
+        facilityIntegerMap= (Map<Facility, Integer>) ReadAndWriter.read(pathFileHouse);
+        System.out.println("--List Facility Needing Maintenance--\n");
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
             if (facilityIntegerEntry.getValue() == 5) {
                 System.out.println("Service " + facilityIntegerEntry.getKey() + "number of times rented" + facilityIntegerEntry.getValue());

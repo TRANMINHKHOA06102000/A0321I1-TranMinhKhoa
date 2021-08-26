@@ -1,8 +1,8 @@
 package case_study.models;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class Booking {
+public class Booking implements Serializable {
     private int idBooking;
     private String startDay;
     private String endDay;

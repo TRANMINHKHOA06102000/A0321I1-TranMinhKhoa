@@ -2,22 +2,24 @@ package case_study.services;
 
 import case_study.models.*;
 import case_study.utils.BookingComparator;
+import case_study.utils.ReadAndWriter;
 
 import java.util.*;
 
 public class BookingServiceImpl implements BookingService {
-    private static final Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
+    private static Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
     static Scanner scanner = new Scanner(System.in);
+    String pathFile = "D:\\A0321I1-TranMinhKhoa\\module2\\src\\case_study\\data\\booking.csv";
 
     static List<Customer> customerList = new ArrayList<>();
     static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
 
     static {
-        customerList.add(new Customer("1", "khoa", "06/20/2000", "Male", 212464999, 0357740062,
+        customerList.add(new Customer("1", "khoa", "06/20/2000", "Male", 999, 0352,
                 "khoa@gmail.com", "Diamond", "Quảng Ngãi"));
-        customerList.add(new Customer("2", "minh", "07/20/2000", "Male", 212464998, 0357740063,
+        customerList.add(new Customer("2", "minh", "07/20/2000", "Male", 464998, 0357,
                 "minh@gmail.com", "Platinium", "Quảng Ngãi"));
-        customerList.add(new Customer("3", "long", "08/20/2000", "Male", 212464997, 0357740064,
+        customerList.add(new Customer("3", "long", "08/20/2000", "Male", 2124, 0064,
                 "long@gmail.com", "Diamond", "Quảng Ngãi"));
 
         facilityIntegerMap.put(new Villa("1", "Villa1", 5000, 3000, 4000, "Theo Ngày",
@@ -28,6 +30,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void display() {
+        bookingSet = (Set<Booking>) ReadAndWriter.read(pathFile);
         System.out.println("---List Booking---");
         for (Booking booking : bookingSet) {
             System.out.println(booking.toString());
@@ -53,7 +56,7 @@ public class BookingServiceImpl implements BookingService {
         Booking booking = new Booking(idBooking, startDay, endDay, idCustomer.toString(), nameServiceFacility.toString(), typeService);
         bookingSet.add(booking);
         System.out.println("Add " + booking + " successful");
-
+        ReadAndWriter.write(bookingSet, pathFile);
     }
 
     public static Customer chooseCustomer() {
@@ -133,12 +136,14 @@ public class BookingServiceImpl implements BookingService {
                 }
                 contract.setNumberContracts(numberContracts);
                 System.out.println("Edit " + contract + " successful");
+                ReadAndWriter.write(bookingSet, pathFile);
                 break;
             case 2:
                 System.out.println("Input idBooking: ");
                 String idBooking = scanner.nextLine();
                 contract.setIdBooking(idBooking);
                 System.out.println("Edit " + contract + " successful");
+                ReadAndWriter.write(bookingSet, pathFile);
                 break;
             case 3:
                 System.out.println("Input advanceDepositAmount: ");
@@ -150,6 +155,7 @@ public class BookingServiceImpl implements BookingService {
                 }
                 contract.setAdvanceDepositAmount(advanceDepositAmount);
                 System.out.println("Edit " + contract + " successful");
+                ReadAndWriter.write(bookingSet, pathFile);
                 break;
             case 4:
                 System.out.println("Input totalPaymentAmount: ");
@@ -161,12 +167,14 @@ public class BookingServiceImpl implements BookingService {
                 }
                 contract.setTotalPaymentAmount(totalPaymentAmount);
                 System.out.println("Edit " + contract + " successful");
+                ReadAndWriter.write(bookingSet, pathFile);
                 break;
             case 5:
                 System.out.println("Input idCustomer: ");
                 String idCustomer = scanner.nextLine();
                 contract.setIdCustomer(idCustomer);
                 System.out.println("Edit " + contract + " successful");
+                ReadAndWriter.write(bookingSet, pathFile);
                 break;
             default:
                 System.out.println("Please enter options: 1 -> 5");

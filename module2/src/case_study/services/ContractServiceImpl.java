@@ -3,12 +3,14 @@ package case_study.services;
 
 import case_study.models.Booking;
 import case_study.models.Contract;
+import case_study.utils.ReadAndWriter;
 
 import java.util.*;
 
 public class ContractServiceImpl implements ContractService {
     static List<Contract> contractList = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
+    String pathFile= "D:\\A0321I1-TranMinhKhoa\\module2\\src\\case_study\\data\\contract.csv";
 
     @Override
     public void addNew() {
@@ -41,11 +43,13 @@ public class ContractServiceImpl implements ContractService {
             Contract contract = new Contract(numberContracts, booking.toString(), advanceDepositAmount, totalPaymentAmount, customer);
             contractList.add(contract);
             System.out.println("Add " + contract + " successful");
+            ReadAndWriter.write(contractList,pathFile);
         }
     }
 
     @Override
     public void display() {
+        contractList= (List<Contract>) ReadAndWriter.read(pathFile);
         for (Contract contract : contractList) {
             System.out.println(contract.toString());
         }

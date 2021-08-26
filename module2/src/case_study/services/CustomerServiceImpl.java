@@ -1,21 +1,23 @@
 package case_study.services;
 
 import case_study.models.Customer;
+import case_study.utils.ReadAndWriter;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
-    private static final List<Customer> customerLinkedList;
+    private static List<Customer> customerLinkedList;
     static Scanner scanner = new Scanner(System.in);
-
+    String pathFile="D:\\A0321I1-TranMinhKhoa\\module2\\src\\case_study\\data\\customer.csv";
     static {
         customerLinkedList = new LinkedList<>();
     }
 
     @Override
     public void display() {
+        customerLinkedList= (List<Customer>) ReadAndWriter.read(pathFile);
         System.out.println("--List Customer--\n");
         for (Customer customer : customerLinkedList) {
             System.out.println(customer);
@@ -66,6 +68,8 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = new Customer(id, name, dateOfBirth, gender, numberCMND, phone, email, typeOfGuest, address);
         customerLinkedList.add(customer);
         System.out.println("Add " + customer + " successful");
+
+        ReadAndWriter.write(customerLinkedList,pathFile);
     }
 
     @Override
@@ -101,18 +105,21 @@ public class CustomerServiceImpl implements CustomerService {
                     String newName = scanner.nextLine();
                     customer.setName(newName);
                     System.out.println("Edit " + customer + " successful");
+                    ReadAndWriter.write(customerLinkedList,pathFile);
                     break;
                 case 2:
                     System.out.println("Input new dateOfBirth customer: ");
                     String newDateOfBirth = scanner.nextLine();
                     customer.setDateOfBirth(newDateOfBirth);
                     System.out.println("Edit " + customer + " successful");
+                    ReadAndWriter.write(customerLinkedList,pathFile);
                     break;
                 case 3:
                     System.out.println("Input new gender customer: ");
                     String newGender = scanner.nextLine();
                     customer.setGender(newGender);
                     System.out.println("Edit " + customer + " successful");
+                    ReadAndWriter.write(customerLinkedList,pathFile);
                     break;
                 case 4:
                     System.out.println("Input new numberCMND customer: ");
@@ -124,6 +131,7 @@ public class CustomerServiceImpl implements CustomerService {
                     }
                     customer.setNumberCMND(newNumberCMND);
                     System.out.println("Edit " + customer + " successful");
+                    ReadAndWriter.write(customerLinkedList,pathFile);
                     break;
                 case 5:
                     System.out.println("Input new phone customer: ");
@@ -135,24 +143,28 @@ public class CustomerServiceImpl implements CustomerService {
                     }
                     customer.setPhone(newPhone);
                     System.out.println("Edit " + customer + " successful");
+                    ReadAndWriter.write(customerLinkedList,pathFile);
                     break;
                 case 6:
                     System.out.println("Input new email customer: ");
                     String newEmail = scanner.nextLine();
                     customer.setEmail(newEmail);
                     System.out.println("Edit " + customer + " successful");
+                    ReadAndWriter.write(customerLinkedList,pathFile);
                     break;
                 case 7:
                     System.out.println("Input new typeOfGuest customer(Diamond, Platinium, Gold, Silver, Member): ");
                     String newTypeOfGuest = scanner.nextLine();
                     customer.setTypeOfGuest(newTypeOfGuest);
                     System.out.println("Edit " + customer + " successful");
+                    ReadAndWriter.write(customerLinkedList,pathFile);
                     break;
                 case 8:
                     System.out.println("Input new address customer: ");
                     String newAddress = scanner.nextLine();
                     customer.setAddress(newAddress);
                     System.out.println("Edit " + customer + " successful");
+                    ReadAndWriter.write(customerLinkedList,pathFile);
                     break;
                 default:
                     System.out.println("Please enter options: 1 -> 8");
