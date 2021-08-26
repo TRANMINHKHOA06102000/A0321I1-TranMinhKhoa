@@ -46,20 +46,29 @@ public class EmployeeServiceImpl implements EmployeeService {
         String dateOfBirth = scanner.nextLine();
         System.out.println("Input gender employee: ");
         String gender = scanner.nextLine();
-        System.out.println("Input number CMND employee: ");
-        int numberCMND = scanner.nextInt();
-        scanner.skip("\\R");
-        System.out.println("Input phone employee: ");
-        int phone = scanner.nextInt();
-        scanner.skip("\\R");
+        int numberCMND = 0;
+        int phone = 0;
+        try {
+            System.out.println("Input number CMND employee: ");
+            numberCMND = Integer.parseInt(scanner.nextLine());
+            System.out.println("Input phone employee: ");
+            phone = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
         System.out.println("Input email employee: ");
         String email = scanner.nextLine();
         System.out.println("Input level employee(Intermediate, College, Undergraduate and Graduate): ");
         String level = scanner.nextLine();
         System.out.println("Input location employee(Receptionist, waiter, specialist, supervisor, manager, director): ");
         String location = scanner.nextLine();
-        System.out.println("Input salary employee: ");
-        double salary = scanner.nextDouble();
+        double salary = 0;
+        try {
+            System.out.println("Input salary employee: ");
+            salary = Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
         Employee employee = new Employee(id, name, dateOfBirth, gender, numberCMND, phone, email, level, location, salary);
         employeeArrayList.add(employee);
         System.out.println("Add " + employee + " successful");
@@ -74,7 +83,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employee == null) {
             System.out.println("Id does not exist");
         } else {
-            int choice;
+            int choice = 0;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException ex) {
+                System.err.println(ex.getMessage());
+            }
             do {
                 System.out.println("Menu Edit");
                 System.out.println("1.Edit name employee");
@@ -87,69 +101,75 @@ public class EmployeeServiceImpl implements EmployeeService {
                 System.out.println("8.Edit location employee");
                 System.out.println("9.Edit salary employee");
                 System.out.println("choose: ");
-                choice = scanner.nextInt();
+
             } while (choice < 1 || choice > 9);
             switch (choice) {
                 case 1:
-                    scanner.skip("\\R");
                     System.out.println("Input new name employee: ");
                     String newName = scanner.nextLine();
                     employee.setName(newName);
                     System.out.println("Edit " + employee + " successful");
                     break;
                 case 2:
-                    scanner.skip("\\R");
                     System.out.println("Input new dateOfBirth employee: ");
                     String newDateOfBirth = scanner.nextLine();
                     employee.setDateOfBirth(newDateOfBirth);
                     System.out.println("Edit " + employee + " successful");
                     break;
                 case 3:
-                    scanner.skip("\\R");
                     System.out.println("Input new gender employee: ");
                     String newGender = scanner.nextLine();
                     employee.setGender(newGender);
                     System.out.println("Edit " + employee + " successful");
                     break;
                 case 4:
-                    scanner.skip("\\R");
                     System.out.println("Input new numberCMND employee: ");
-                    int newNumberCMND = scanner.nextInt();
+                    int newNumberCMND = 0;
+                    try {
+                        newNumberCMND = Integer.parseInt(scanner.nextLine());
+                    } catch (NumberFormatException ex) {
+                        System.err.println(ex.getMessage());
+                    }
                     employee.setNumberCMND(newNumberCMND);
                     System.out.println("Edit " + employee + " successful");
                     break;
                 case 5:
-                    scanner.skip("\\R");
                     System.out.println("Input new phone employee: ");
-                    int newPhone = scanner.nextInt();
+                    int newPhone = 0;
+                    try {
+                        newPhone = Integer.parseInt(scanner.nextLine());
+                    } catch (NumberFormatException ex) {
+                        System.err.println(ex.getMessage());
+                    }
                     employee.setPhone(newPhone);
                     System.out.println("Edit " + employee + " successful");
                     break;
                 case 6:
-                    scanner.skip("\\R");
                     System.out.println("Input new email employee: ");
                     String newEmail = scanner.nextLine();
                     employee.setEmail(newEmail);
                     System.out.println("Edit " + employee + " successful");
                     break;
                 case 7:
-                    scanner.skip("\\R");
                     System.out.println("Input new level employee(Intermediate, College, Undergraduate and Graduate): ");
                     String newLevel = scanner.nextLine();
                     employee.setLevel(newLevel);
                     System.out.println("Edit " + employee + " successful");
                     break;
                 case 8:
-                    scanner.skip("\\R");
                     System.out.println("Input new location employee(Receptionist, waiter, specialist, supervisor, manager, director): ");
                     String newLocation = scanner.nextLine();
                     employee.setLocation(newLocation);
                     System.out.println("Edit " + employee + " successful");
                     break;
                 case 9:
-                    scanner.skip("\\R");
                     System.out.println("Input new salary employee: ");
-                    double newSalary = scanner.nextDouble();
+                    double newSalary = 0;
+                    try {
+                        newSalary = Double.parseDouble(scanner.nextLine());
+                    } catch (NumberFormatException ex) {
+                        System.err.println(ex.getMessage());
+                    }
                     employee.setSalary(newSalary);
                     System.out.println("Edit " + employee + " successful");
                     break;

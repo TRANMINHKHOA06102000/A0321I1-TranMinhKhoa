@@ -18,7 +18,7 @@ public class FacilityServiceImpl implements FacilityService {
     public void display() {
         System.out.println("--List Facility--");
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
-            System.out.println("Service "+ facilityIntegerEntry.getKey()+ "number of times rented"+ facilityIntegerEntry.getValue());
+            System.out.println("Service " + facilityIntegerEntry.getKey() + "number of times rented" + facilityIntegerEntry.getValue());
         }
     }
 
@@ -32,28 +32,31 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("5. Exit");
         System.out.println("------------------------------");
         System.out.print("Your choose: ");
-        String choose = scanner.nextLine();
+        int choose = 0;
+        try {
+            choose = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
         switch (choose) {
-            case "1":
+            case 1:
                 addNewVilla();
                 break;
-            case "2":
+            case 2:
                 addNewHouse();
                 break;
-            case "3":
+            case 3:
                 addNewRoom();
                 break;
-            case "4":
+            case 4:
                 addNew();
                 break;
-            case "5": {
+            case 5: {
                 System.exit(0);
                 break;
             }
             default: {
                 System.out.println("Fail! Please choose again! Enter to continue.");
-                System.out.print("Your choose: ");
-                scanner.nextLine();
                 addNew();
             }
         }
@@ -71,17 +74,24 @@ public class FacilityServiceImpl implements FacilityService {
         } while (searchById(id) != null);
         System.out.println("Input name: ");
         String name = scanner.nextLine();
-        System.out.println("Input area: ");
-        int area = Integer.parseInt(scanner.nextLine());
-        System.out.println("Input price: ");
-        double price = Double.parseDouble(scanner.nextLine());
-        System.out.println("Input amount: ");
-        int amount = Integer.parseInt(scanner.nextLine());
+        int area = 0;
+        double price = 0;
+        int amount = 0;
+        try {
+            System.out.println("Input area: ");
+            area = Integer.parseInt(scanner.nextLine());
+            System.out.println("Input price: ");
+            price = Double.parseDouble(scanner.nextLine());
+            System.out.println("Input amount: ");
+            amount = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
         System.out.println("Input typeRents(Year/Month/Day/Hour): ");
         String typeRents = scanner.nextLine();
         System.out.println("Input freeService: ");
         String freeService = scanner.nextLine();
-        Room room = new Room(id,name, area, price, amount, typeRents, freeService);
+        Room room = new Room(id, name, area, price, amount, typeRents, freeService);
 
         facilityIntegerMap.put(room, 0);
         System.out.println("Add " + room + " successful");
@@ -99,19 +109,26 @@ public class FacilityServiceImpl implements FacilityService {
         } while (searchById(id) != null);
         System.out.println("Input name: ");
         String name = scanner.nextLine();
-        System.out.println("Input area: ");
-        int area = Integer.parseInt(scanner.nextLine());
-        System.out.println("Input price: ");
-        double price = Double.parseDouble(scanner.nextLine());
-        System.out.println("Input amount: ");
-        int amount = Integer.parseInt(scanner.nextLine());
+        int area = 0;
+        double price = 0;
+        int amount = 0;
+        try {
+            System.out.println("Input area: ");
+            area = Integer.parseInt(scanner.nextLine());
+            System.out.println("Input price: ");
+            price = Double.parseDouble(scanner.nextLine());
+            System.out.println("Input amount: ");
+            amount = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
         System.out.println("Input typeRents(Year/Month/Day/Hour): ");
         String typeRents = scanner.nextLine();
         System.out.println("Input standardRoom: ");
         String standardRoom = scanner.nextLine();
         System.out.println("Input numberOfFloors: ");
         int numberOfFloors = Integer.parseInt(scanner.nextLine());
-        House house = new House(id,name, area, price, amount, typeRents, standardRoom, numberOfFloors);
+        House house = new House(id, name, area, price, amount, typeRents, standardRoom, numberOfFloors);
 
         facilityIntegerMap.put(house, 0);
         System.out.println("Add " + house + " successful");
@@ -129,12 +146,19 @@ public class FacilityServiceImpl implements FacilityService {
         } while (searchById(id) != null);
         System.out.println("Input name: ");
         String name = scanner.nextLine();
-        System.out.println("Input area: ");
-        int area = Integer.parseInt(scanner.nextLine());
-        System.out.println("Input price: ");
-        double price = Double.parseDouble(scanner.nextLine());
-        System.out.println("Input amount: ");
-        int amount = Integer.parseInt(scanner.nextLine());
+        int area = 0;
+        double price = 0;
+        int amount = 0;
+        try {
+            System.out.println("Input area: ");
+            area = Integer.parseInt(scanner.nextLine());
+            System.out.println("Input price: ");
+            price = Double.parseDouble(scanner.nextLine());
+            System.out.println("Input amount: ");
+            amount = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
         System.out.println("Input typeRents(Year/Month/Day/Hour): ");
         String typeRents = scanner.nextLine();
         System.out.println("Input standardRoom: ");
@@ -143,18 +167,20 @@ public class FacilityServiceImpl implements FacilityService {
         int areaPool = Integer.parseInt(scanner.nextLine());
         System.out.println("Input numberOfFloors: ");
         int numberOfFloors = Integer.parseInt(scanner.nextLine());
-        Villa villa = new Villa(id,name, area, price, amount, typeRents, standardRoom, areaPool, numberOfFloors);
+        Villa villa = new Villa(id, name, area, price, amount, typeRents, standardRoom, areaPool, numberOfFloors);
         facilityIntegerMap.put(villa, 0);
         System.out.println("Add " + villa + " successful");
     }
+
     public Facility searchById(String id) {
-        for (Map.Entry<Facility,Integer> facilityIntegerEntry: facilityIntegerMap.entrySet()) {
+        for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
             if (id.equals(facilityIntegerEntry.getKey().getId())) {
                 return facilityIntegerEntry.getKey();
             }
         }
         return null;
     }
+
     @Override
     public void edit() {
 
@@ -165,7 +191,7 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("--List Facility Needing Maintenance--");
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
             if (facilityIntegerEntry.getValue() == 5) {
-                System.out.println("Service "+ facilityIntegerEntry.getKey()+ "number of times rented"+ facilityIntegerEntry.getValue());
+                System.out.println("Service " + facilityIntegerEntry.getKey() + "number of times rented" + facilityIntegerEntry.getValue());
             }
         }
     }

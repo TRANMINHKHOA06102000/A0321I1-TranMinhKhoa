@@ -107,7 +107,12 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void edit() {
         Contract contract = new Contract();
-        int choice;
+        int choice = 0;
+        try {
+            choice = scanner.nextInt();
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
         do {
             System.out.println("Menu Edit");
             System.out.println("1.Edit numberContracts");
@@ -116,12 +121,16 @@ public class BookingServiceImpl implements BookingService {
             System.out.println("4.Edit totalPaymentAmount");
             System.out.println("5.Edit idCustomer");
             System.out.println("choose: ");
-            choice = scanner.nextInt();
         } while (choice < 1 || choice > 5);
         switch (choice) {
             case 1:
                 System.out.println("Input numberContracts: ");
-                int numberContracts = Integer.parseInt(scanner.nextLine());
+                int numberContracts = 0;
+                try {
+                    numberContracts = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException ex) {
+                    System.err.println(ex.getMessage());
+                }
                 contract.setNumberContracts(numberContracts);
                 System.out.println("Edit " + contract + " successful");
                 break;
@@ -133,13 +142,23 @@ public class BookingServiceImpl implements BookingService {
                 break;
             case 3:
                 System.out.println("Input advanceDepositAmount: ");
-                double advanceDepositAmount = Double.parseDouble(scanner.nextLine());
+                double advanceDepositAmount = 0;
+                try {
+                    advanceDepositAmount = Double.parseDouble(scanner.nextLine());
+                } catch (NumberFormatException ex) {
+                    System.err.println(ex.getMessage());
+                }
                 contract.setAdvanceDepositAmount(advanceDepositAmount);
                 System.out.println("Edit " + contract + " successful");
                 break;
             case 4:
                 System.out.println("Input totalPaymentAmount: ");
-                double totalPaymentAmount = Double.parseDouble(scanner.nextLine());
+                double totalPaymentAmount = 0;
+                try {
+                    totalPaymentAmount = Double.parseDouble(scanner.nextLine());
+                } catch (NumberFormatException ex) {
+                    System.err.println(ex.getMessage());
+                }
                 contract.setTotalPaymentAmount(totalPaymentAmount);
                 System.out.println("Edit " + contract + " successful");
                 break;

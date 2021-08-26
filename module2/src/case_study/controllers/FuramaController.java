@@ -17,37 +17,40 @@ public class FuramaController {
         System.out.println("6. Exit");
         System.out.println("------------------------------");
         System.out.print("Your choose: ");
-        String choose = input.nextLine();
+        int choose = 0;
+        try {
+            choose = Integer.parseInt(input.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
 
         switch (choose) {
-            case "1": {
+            case 1: {
                 employee();
                 break;
             }
-            case "2": {
+            case 2: {
                 customer();
                 break;
             }
-            case "3": {
+            case 3: {
                 facility();
                 break;
             }
-            case "4": {
+            case 4: {
                 booking();
                 break;
             }
-            case "5": {
+            case 5: {
                 promotion();
                 break;
             }
-            case "6": {
+            case 6: {
                 System.exit(0);
                 break;
             }
             default: {
                 System.out.println("Fail! Please choose again! Enter to continue.");
-                System.out.print("Your choose: ");
-                input.nextLine();
                 displayMainMenu();
             }
         }
@@ -63,36 +66,39 @@ public class FuramaController {
         System.out.println("5. Exit");
         System.out.println("------------------------------");
         System.out.print("Your choose: ");
-        String choose = input.nextLine();
+        int choose = 0;
+        try {
+            choose = Integer.parseInt(input.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
 
         switch (choose) {
-            case "1": {
+            case 1: {
                 employeeService.display();
                 employee();
                 break;
             }
-            case "2": {
+            case 2: {
                 employeeService.addNew();
                 employee();
                 break;
             }
-            case "3": {
+            case 3: {
                 employeeService.edit();
                 employee();
                 break;
             }
-            case "4": {
+            case 4: {
                 displayMainMenu();
                 break;
             }
-            case "5": {
+            case 5: {
                 System.exit(0);
                 break;
             }
             default: {
                 System.out.println("Fail! Please choose again! Enter to continue.");
-                System.out.print("Your choose: ");
-                input.nextLine();
                 employee();
             }
         }
@@ -108,36 +114,39 @@ public class FuramaController {
         System.out.println("5. Exit");
         System.out.println("------------------------------");
         System.out.print("Your choose: ");
-        String choose = input.nextLine();
+        int choose = 0;
+        try {
+            choose = Integer.parseInt(input.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
 
         switch (choose) {
-            case "1": {
+            case 1: {
                 customerService.display();
                 customer();
                 break;
             }
-            case "2": {
+            case 2: {
                 customerService.addNew();
                 customer();
                 break;
             }
-            case "3": {
+            case 3: {
                 customerService.edit();
                 customer();
                 break;
             }
-            case "4": {
+            case 4: {
                 displayMainMenu();
                 break;
             }
-            case "5": {
+            case 5: {
                 System.exit(0);
                 break;
             }
             default: {
                 System.out.println("Fail! Please choose again! Enter to continue.");
-                System.out.print("Your choose: ");
-                input.nextLine();
                 customer();
             }
         }
@@ -153,36 +162,39 @@ public class FuramaController {
         System.out.println("5. Exit");
         System.out.println("------------------------------");
         System.out.print("Your choose: ");
-        String choose = input.nextLine();
+        int choose = 0;
+        try {
+            choose = Integer.parseInt(input.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
 
         switch (choose) {
-            case "1": {
+            case 1: {
                 facilityService.display();
                 facility();
                 break;
             }
-            case "2": {
+            case 2: {
                 facilityService.addNew();
                 facility();
                 break;
             }
-            case "3": {
+            case 3: {
                 facilityService.displayFacilityNeedingMaintenance();
                 facility();
                 break;
             }
-            case "4": {
+            case 4: {
                 displayMainMenu();
                 break;
             }
-            case "5": {
+            case 5: {
                 System.exit(0);
                 break;
             }
             default: {
                 System.out.println("Fail! Please choose again! Enter to continue.");
-                System.out.print("Your choose: ");
-                input.nextLine();
                 facility();
             }
         }
@@ -190,7 +202,7 @@ public class FuramaController {
 
     public void booking() {
         BookingServiceImpl bookingService = new BookingServiceImpl();
-        ContractServiceImpl contractService= new ContractServiceImpl();
+        ContractServiceImpl contractService = new ContractServiceImpl();
         System.out.println("---------- Booking Management ----------");
         System.out.println("1. Add new booking");
         System.out.println("2. Display list booking");
@@ -200,45 +212,48 @@ public class FuramaController {
         System.out.println("6. Return main menu");
         System.out.println("------------------------------");
         System.out.print("Your choose: ");
-        String choose = input.nextLine();
+        int choose = 0;
+        try {
+            choose = Integer.parseInt(input.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
 
         switch (choose) {
-            case "1": {
+            case 1: {
                 bookingService.addNew();
                 booking();
                 break;
             }
-            case "2": {
+            case 2: {
                 bookingService.display();
                 booking();
                 break;
             }
-            case "3": {
+            case 3: {
                 contractService.addNew();
                 booking();
                 break;
             }
-            case "4": {
+            case 4: {
                 contractService.display();
                 booking();
                 break;
             }
-            case "5": {
+            case 5: {
                 contractService.edit();
                 break;
             }
-            case "6": {
+            case 6: {
                 displayMainMenu();
                 break;
             }
-            case "7": {
+            case 7: {
                 System.exit(0);
                 break;
             }
             default: {
                 System.out.println("Fail! Please choose again! Enter to continue.");
-                System.out.print("Your choose: ");
-                input.nextLine();
                 booking();
             }
         }
@@ -251,32 +266,35 @@ public class FuramaController {
         System.out.println("3. Return main menu");
         System.out.println("4. Exit");
         System.out.println("------------------------------");
-        /*System.out.print("Your choose: ");
-        String choose = input.nextLine();
+        System.out.print("Your choose: ");
+        int choose = 0;
+        try {
+            choose = Integer.parseInt(input.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
 
         switch (choose) {
-            case "1": {
+            case 1: {
 
                 break;
             }
-            case "2": {
+            case 2: {
 
                 break;
             }
-            case "3": {
-
+            case 3: {
+                displayMainMenu();
                 break;
             }
-            case "4": {
+            case 4: {
                 System.exit(0);
                 break;
             }
             default: {
                 System.out.println("Fail! Please choose again! Enter to continue.");
-                System.out.print("Your choose: ");
-                input.nextLine();
                 promotion();
             }
-        }*/
+        }
     }
 }

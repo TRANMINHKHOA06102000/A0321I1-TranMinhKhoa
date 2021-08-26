@@ -25,12 +25,19 @@ public class ContractServiceImpl implements ContractService {
             System.out.println("creating contract for booking with information: " + booking.toString());
             System.out.println("creating contract for customer with information: " + customer.toString());
 
-            System.out.println("input numberContracts:");
-            int numberContracts = Integer.parseInt(scanner.nextLine());
-            System.out.println("input advanceDepositAmount:");
-            double advanceDepositAmount = Double.parseDouble(scanner.nextLine());
-            System.out.println("input totalPaymentAmount:");
-            double totalPaymentAmount = Double.parseDouble(scanner.nextLine());
+            int numberContracts = 0;
+            double advanceDepositAmount = 0;
+            double totalPaymentAmount = 0;
+            try {
+                System.out.println("input numberContracts:");
+                numberContracts = Integer.parseInt(scanner.nextLine());
+                System.out.println("input advanceDepositAmount:");
+                advanceDepositAmount = Double.parseDouble(scanner.nextLine());
+                System.out.println("input totalPaymentAmount:");
+                totalPaymentAmount = Double.parseDouble(scanner.nextLine());
+            } catch (NumberFormatException ex) {
+                System.err.println(ex.getMessage());
+            }
             Contract contract = new Contract(numberContracts, booking.toString(), advanceDepositAmount, totalPaymentAmount, customer);
             contractList.add(contract);
             System.out.println("Add " + contract + " successful");

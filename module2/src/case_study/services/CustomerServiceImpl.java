@@ -47,12 +47,16 @@ public class CustomerServiceImpl implements CustomerService {
         String dateOfBirth = scanner.nextLine();
         System.out.println("Input gender customer: ");
         String gender = scanner.nextLine();
-        System.out.println("Input number CMND customer: ");
-        int numberCMND = scanner.nextInt();
-        scanner.skip("\\R");
-        System.out.println("Input phone customer: ");
-        int phone = scanner.nextInt();
-        scanner.skip("\\R");
+        int numberCMND = 0;
+        int phone = 0;
+        try {
+            System.out.println("Input number CMND customer: ");
+            numberCMND = Integer.parseInt(scanner.nextLine());
+            System.out.println("Input phone customer: ");
+            phone = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException ex) {
+            System.err.println(ex.getMessage());
+        }
         System.out.println("Input email customer: ");
         String email = scanner.nextLine();
         System.out.println("Input typeOfGuest customer(Diamond, Platinium, Gold, Silver, Member): ");
@@ -73,7 +77,12 @@ public class CustomerServiceImpl implements CustomerService {
         if (customer == null) {
             System.out.println("Id does not exist");
         } else {
-            int choice;
+            int choice = 0;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException ex) {
+                System.err.println(ex.getMessage());
+            }
             do {
                 System.out.println("Menu Edit");
                 System.out.println("1.Edit name customer");
@@ -85,60 +94,61 @@ public class CustomerServiceImpl implements CustomerService {
                 System.out.println("7.Edit typeOfGuest customer");
                 System.out.println("8.Edit address customer");
                 System.out.println("choose: ");
-                choice = scanner.nextInt();
             } while (choice < 1 || choice > 8);
             switch (choice) {
                 case 1:
-                    scanner.skip("\\R");
                     System.out.println("Input new name customer: ");
                     String newName = scanner.nextLine();
                     customer.setName(newName);
                     System.out.println("Edit " + customer + " successful");
                     break;
                 case 2:
-                    scanner.skip("\\R");
                     System.out.println("Input new dateOfBirth customer: ");
                     String newDateOfBirth = scanner.nextLine();
                     customer.setDateOfBirth(newDateOfBirth);
                     System.out.println("Edit " + customer + " successful");
                     break;
                 case 3:
-                    scanner.skip("\\R");
                     System.out.println("Input new gender customer: ");
                     String newGender = scanner.nextLine();
                     customer.setGender(newGender);
                     System.out.println("Edit " + customer + " successful");
                     break;
                 case 4:
-                    scanner.skip("\\R");
                     System.out.println("Input new numberCMND customer: ");
-                    int newNumberCMND = scanner.nextInt();
+                    int newNumberCMND = 0;
+                    try {
+                        newNumberCMND = Integer.parseInt(scanner.nextLine());
+                    } catch (NumberFormatException ex) {
+                        System.err.println(ex.getMessage());
+                    }
                     customer.setNumberCMND(newNumberCMND);
                     System.out.println("Edit " + customer + " successful");
                     break;
                 case 5:
-                    scanner.skip("\\R");
                     System.out.println("Input new phone customer: ");
-                    int newPhone = scanner.nextInt();
+                    int newPhone = 0;
+                    try {
+                        newPhone = Integer.parseInt(scanner.nextLine());
+                    } catch (NumberFormatException ex) {
+                        System.err.println(ex.getMessage());
+                    }
                     customer.setPhone(newPhone);
                     System.out.println("Edit " + customer + " successful");
                     break;
                 case 6:
-                    scanner.skip("\\R");
                     System.out.println("Input new email customer: ");
                     String newEmail = scanner.nextLine();
                     customer.setEmail(newEmail);
                     System.out.println("Edit " + customer + " successful");
                     break;
                 case 7:
-                    scanner.skip("\\R");
                     System.out.println("Input new typeOfGuest customer(Diamond, Platinium, Gold, Silver, Member): ");
                     String newTypeOfGuest = scanner.nextLine();
                     customer.setTypeOfGuest(newTypeOfGuest);
                     System.out.println("Edit " + customer + " successful");
                     break;
                 case 8:
-                    scanner.skip("\\R");
                     System.out.println("Input new address customer: ");
                     String newAddress = scanner.nextLine();
                     customer.setAddress(newAddress);
