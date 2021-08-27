@@ -16,7 +16,8 @@ public class FacilityServiceImpl implements FacilityService {
     String pathFileHouse = "D:\\A0321I1-TranMinhKhoa\\module2\\src\\case_study\\data\\house.csv";
     String pathFileRoom = "D:\\A0321I1-TranMinhKhoa\\module2\\src\\case_study\\data\\room.csv";
 
-    private static final String REGEX_AGE_DATEOFBIRTH="/^(0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2}$/";
+    private static final String REGEX_AGE_DATEOFBIRTH = "/^(0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2}$/";
+
     static {
         facilityIntegerMap = new LinkedHashMap<>();
     }
@@ -90,24 +91,24 @@ public class FacilityServiceImpl implements FacilityService {
         } while (!RegexData.checkNameAndStandard(name));
 
         int area = 0;
-        do{
-            try{
+        do {
+            try {
                 System.out.println("Input area: ");
                 area = Integer.parseInt(scanner.nextLine());
-            }catch (NumberFormatException ex){
+            } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        }while (!RegexData.checkAreaAndAreaPool(area));
+        } while (!RegexData.checkAreaAndAreaPool(area));
 
         double price = 0;
-        do{
-            try{
+        do {
+            try {
                 System.out.println("Input price: ");
                 price = Double.parseDouble(scanner.nextLine());
-            }catch (NumberFormatException ex){
+            } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        }while (!RegexData.checkPrice(price));
+        } while (!RegexData.checkPrice(price));
 
         int amount = 0;
         do {
@@ -117,13 +118,13 @@ public class FacilityServiceImpl implements FacilityService {
             } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        }while (!RegexData.checkAmount(amount));
+        } while (!RegexData.checkAmount(amount));
 
         String typeRents;
         do {
             System.out.println("Input typeRents(Year/Month/Day/Hour): ");
             typeRents = scanner.nextLine();
-        }while (!RegexData.checkTypeRent(typeRents));
+        } while (!RegexData.checkTypeRent(typeRents));
 
         System.out.println("Input freeService: ");
         String freeService = scanner.nextLine();
@@ -152,24 +153,24 @@ public class FacilityServiceImpl implements FacilityService {
         } while (!RegexData.checkNameAndStandard(name));
 
         int area = 0;
-        do{
-            try{
+        do {
+            try {
                 System.out.println("Input area: ");
                 area = Integer.parseInt(scanner.nextLine());
-            }catch (NumberFormatException ex){
+            } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        }while (!RegexData.checkAreaAndAreaPool(area));
+        } while (!RegexData.checkAreaAndAreaPool(area));
 
         double price = 0;
-        do{
-            try{
+        do {
+            try {
                 System.out.println("Input price: ");
                 price = Double.parseDouble(scanner.nextLine());
-            }catch (NumberFormatException ex){
+            } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        }while (!RegexData.checkPrice(price));
+        } while (!RegexData.checkPrice(price));
 
         int amount = 0;
         do {
@@ -179,19 +180,19 @@ public class FacilityServiceImpl implements FacilityService {
             } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        }while (!RegexData.checkAmount(amount));
+        } while (!RegexData.checkAmount(amount));
 
         String typeRents;
         do {
             System.out.println("Input typeRents(Year/Month/Day/Hour): ");
             typeRents = scanner.nextLine();
-        }while (!RegexData.checkTypeRent(typeRents));
+        } while (!RegexData.checkTypeRent(typeRents));
 
         String standardRoom;
         do {
             System.out.println("Input standardRoom: ");
             standardRoom = scanner.nextLine();
-        }while (!RegexData.checkNameAndStandard(standardRoom));
+        } while (!RegexData.checkNameAndStandard(standardRoom));
 
         int numberOfFloors;
         do {
@@ -207,8 +208,6 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void addNewVilla() {
-       /* System.out.println("Input age: ");
-        String dateOfBirth=RegexData.regexAge(scanner.nextLine(),REGEX_AGE_DATEOFBIRTH);*/
         String id;
         do {
             System.out.println("Input Id: ");
@@ -218,6 +217,8 @@ public class FacilityServiceImpl implements FacilityService {
             }
         } while (searchById(id) != null && !RegexData.checkIdVilla(id));
 
+       /* System.out.println("Input age: ");
+        String dateOfBirth=RegexData.regexAge(scanner.nextLine(),REGEX_AGE_DATEOFBIRTH);*/
         String name;
         do {
             System.out.println("Input name: ");
@@ -225,24 +226,24 @@ public class FacilityServiceImpl implements FacilityService {
         } while (!RegexData.checkNameAndStandard(name));
 
         int area = 0;
-        do{
-            try{
+        do {
+            try {
                 System.out.println("Input area: ");
                 area = Integer.parseInt(scanner.nextLine());
-            }catch (NumberFormatException ex){
+            } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        }while (!RegexData.checkAreaAndAreaPool(area));
+        } while (!RegexData.checkAreaAndAreaPool(area));
 
         double price = 0;
-        do{
-            try{
+        do {
+            try {
                 System.out.println("Input price: ");
                 price = Double.parseDouble(scanner.nextLine());
-            }catch (NumberFormatException ex){
+            } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        }while (!RegexData.checkPrice(price));
+        } while (!RegexData.checkPrice(price));
 
         int amount = 0;
         do {
@@ -252,25 +253,25 @@ public class FacilityServiceImpl implements FacilityService {
             } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        }while (!RegexData.checkAmount(amount));
+        } while (!RegexData.checkAmount(amount));
 
         String typeRents;
         do {
             System.out.println("Input typeRents(Year/Month/Day/Hour): ");
             typeRents = scanner.nextLine();
-        }while (!RegexData.checkTypeRent(typeRents));
+        } while (!RegexData.checkTypeRent(typeRents));
 
         String standardRoom;
         do {
             System.out.println("Input standardRoom: ");
             standardRoom = scanner.nextLine();
-        }while (!RegexData.checkNameAndStandard(standardRoom));
+        } while (!RegexData.checkNameAndStandard(standardRoom));
 
         int areaPool;
         do {
             System.out.println("Input areaPool: ");
             areaPool = Integer.parseInt(scanner.nextLine());
-        }while (!RegexData.checkAreaAndAreaPool(areaPool));
+        } while (!RegexData.checkAreaAndAreaPool(areaPool));
 
 
         int numberOfFloors;

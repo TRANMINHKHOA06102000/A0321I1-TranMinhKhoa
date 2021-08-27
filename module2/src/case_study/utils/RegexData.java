@@ -76,27 +76,27 @@ public class RegexData {
         return typeRents.matches(regex);
     }
 
-    public static String regexAge(String temp, String regex){
-        boolean check=true;
-        while (check){
-            try{
-                if(Pattern.matches(regex,temp)){
-                    DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    LocalDate age=LocalDate.parse(temp,formatter);
-                    LocalDate now=LocalDate.now();
+    public static String regexAge(String temp, String regex) {
+        boolean check = true;
+        while (check) {
+            try {
+                if (Pattern.matches(regex, temp)) {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDate age = LocalDate.parse(temp, formatter);
+                    LocalDate now = LocalDate.now();
 
-                    int current= Period.between(age,now).getYears();
-                    if(current<100 && current>18){
-                        check=false;
-                    }else {
+                    int current = Period.between(age, now).getYears();
+                    if (current < 100 && current > 18) {
+                        check = false;
+                    } else {
                         throw new AgeException("Age >18 and Age<100");
                     }
-                }else {
+                } else {
                     throw new AgeException("input format is not correct");
                 }
-            }catch (AgeException ex){
+            } catch (AgeException ex) {
                 System.out.println(ex.getMessage());
-                temp=scanner.nextLine();
+                temp = scanner.nextLine();
             }
         }
         return temp;
