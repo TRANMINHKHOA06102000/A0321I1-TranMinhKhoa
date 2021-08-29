@@ -260,6 +260,7 @@ public class FuramaController {
     }
 
     public void promotion() {
+        PromotionServiceImpl promotionService = new PromotionServiceImpl();
         System.out.println("---------- Promotion Management ----------");
         System.out.println("1. Display list customers use service");
         System.out.println("2. Display list customers get voucher");
@@ -276,11 +277,11 @@ public class FuramaController {
 
         switch (choose) {
             case 1: {
-
+                promotionService.displayListCustomersUseService();
                 break;
             }
             case 2: {
-
+                promotionService.displayListCustomersGetVoucher();
                 break;
             }
             case 3: {

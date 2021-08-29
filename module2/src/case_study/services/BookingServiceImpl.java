@@ -39,13 +39,11 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void addNew() {
-        int idBooking = 1;
-        if (!bookingSet.isEmpty()) {
-            idBooking = bookingSet.size();
-        }
+        int idBooking;
+        System.out.println("Input id: ");
+        idBooking= Integer.parseInt(scanner.nextLine());
         Customer idCustomer = chooseCustomer();
         Facility nameServiceFacility = chooseFacility();
-
         System.out.println("Input startDay booking: ");
         String startDay = scanner.nextLine();
         System.out.println("Input endDay booking: ");
@@ -53,7 +51,7 @@ public class BookingServiceImpl implements BookingService {
         System.out.println("Input typeService booking (Villa, House, Room): ");
         String typeService = scanner.nextLine();
 
-        Booking booking = new Booking(idBooking, startDay, endDay, idCustomer.toString(), nameServiceFacility.toString(), typeService);
+        Booking booking = new Booking(idBooking, startDay, endDay, idCustomer.getId(), nameServiceFacility.getName(), typeService);
         bookingSet.add(booking);
         System.out.println("Add " + booking + " successful");
         ReadAndWriter.write(bookingSet, pathFile);

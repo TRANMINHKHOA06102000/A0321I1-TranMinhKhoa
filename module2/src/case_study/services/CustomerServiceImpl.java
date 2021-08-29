@@ -13,8 +13,14 @@ public class CustomerServiceImpl implements CustomerService {
     String pathFile="D:\\A0321I1-TranMinhKhoa\\module2\\src\\case_study\\data\\customer.csv";
     static {
         customerLinkedList = new LinkedList<>();
+        customerLinkedList.add(new Customer("1","khoa","11/12/2000","nam",
+                121,456,"k@gmail","Platinium","Quảng Ngãi"));
+        customerLinkedList.add(new Customer("2","minh","11/12/2000","nam",
+                223,567,"k1@gmail","Platinium","Quảng Ngãi"));
     }
-
+    public List<Customer> getCustomer(){
+        return customerLinkedList;
+    }
     @Override
     public void display() {
         customerLinkedList= (List<Customer>) ReadAndWriter.read(pathFile);

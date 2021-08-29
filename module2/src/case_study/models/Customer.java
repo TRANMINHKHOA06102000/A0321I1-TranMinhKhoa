@@ -44,4 +44,5 @@ public class Customer extends Person implements Serializable {
                 '}' + ", which is a subclass of " +
                 super.toString();
     }
+
 }
