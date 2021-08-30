@@ -182,4 +182,35 @@ public class BookingServiceImpl implements BookingService {
     public Set<Booking> sendBooking() {
         return bookingSet;
     }
+/*    private void showListIdCustomer() {
+        System.out.println("\n========List ID Customer========");
+        int index = 0;
+        for (Customer customer : customerList) {
+            System.out.println("No." + index + ": " + customer);
+            index++;
+        }
+    }
+    private String chooseIdCustomer() {
+        showListIdCustomer();
+
+        System.out.print("Enter a number of list: ");
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
+
+        boolean check = true;
+        String idCustomer = null;
+        while (check) {
+            for (Customer customer : customerList) {
+                if (choice == customerList.indexOf(customer)) {
+                    idCustomer = customer.getId();
+                    check = false;
+                }
+            }
+            if (check) {
+                System.out.print("Enter again, please: ");
+                choice = scanner.nextInt();
+            }
+        }
+        return idCustomer;
+    }*/
 }
