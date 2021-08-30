@@ -4,10 +4,7 @@ import case_study.models.*;
 import case_study.utils.ReadAndWriter;
 import case_study.utils.RegexData;
 
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class FacilityServiceImpl implements FacilityService {
     private static Map<Facility, Integer> facilityIntegerMap;
@@ -24,9 +21,9 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void display() {
-        facilityIntegerMap = (Map<Facility, Integer>) ReadAndWriter.read(pathFileVilla);
-        facilityIntegerMap = (Map<Facility, Integer>) ReadAndWriter.read(pathFileRoom);
-        facilityIntegerMap = (Map<Facility, Integer>) ReadAndWriter.read(pathFileHouse);
+//        facilityIntegerMap = (Map<Facility, Integer>) ReadAndWriter.read(pathFileVilla);
+//        facilityIntegerMap = (Map<Facility, Integer>) ReadAndWriter.read(pathFileRoom);
+//        facilityIntegerMap = (Map<Facility, Integer>) ReadAndWriter.read(pathFileHouse);
         System.out.println("--List Facility--\n");
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
             System.out.println("Service " + facilityIntegerEntry.getKey() + "number of times rented" + facilityIntegerEntry.getValue());
@@ -82,7 +79,7 @@ public class FacilityServiceImpl implements FacilityService {
             if (searchById(id) != null) {
                 System.out.println("id already exists");
             }
-        } while (searchById(id) != null && !RegexData.checkIdVilla(id));
+        } while (searchById(id) != null && !RegexData.checkIDRoom(id));
 
         String name;
         do {
@@ -122,7 +119,7 @@ public class FacilityServiceImpl implements FacilityService {
 
         String typeRents;
         do {
-            System.out.println("Input typeRents(Year/Month/Day/Hour): ");
+            System.out.println("Input typeRents(year/month/day/hour): ");
             typeRents = scanner.nextLine();
         } while (!RegexData.checkTypeRent(typeRents));
 
@@ -132,7 +129,7 @@ public class FacilityServiceImpl implements FacilityService {
         Room room = new Room(id, name, area, price, amount, typeRents, freeService);
         facilityIntegerMap.put(room, 0);
         System.out.println("Add " + room + " successful");
-        ReadAndWriter.write((Collection) facilityIntegerMap, pathFileRoom);
+        writeFacility("SVRO",pathFileRoom);
     }
 
     @Override
@@ -144,7 +141,7 @@ public class FacilityServiceImpl implements FacilityService {
             if (searchById(id) != null) {
                 System.out.println("id already exists");
             }
-        } while (searchById(id) != null && !RegexData.checkIdVilla(id));
+        } while (searchById(id) != null && !RegexData.checkIdHouse(id));
 
         String name;
         do {
@@ -184,7 +181,7 @@ public class FacilityServiceImpl implements FacilityService {
 
         String typeRents;
         do {
-            System.out.println("Input typeRents(Year/Month/Day/Hour): ");
+            System.out.println("Input typeRents(year/month/day/hour): ");
             typeRents = scanner.nextLine();
         } while (!RegexData.checkTypeRent(typeRents));
 
@@ -203,7 +200,7 @@ public class FacilityServiceImpl implements FacilityService {
         House house = new House(id, name, area, price, amount, typeRents, standardRoom, numberOfFloors);
         facilityIntegerMap.put(house, 0);
         System.out.println("Add " + house + " successful");
-        ReadAndWriter.write((Collection) facilityIntegerMap, pathFileHouse);
+        writeFacility("SVHO",pathFileHouse);
     }
 
     @Override
@@ -257,7 +254,7 @@ public class FacilityServiceImpl implements FacilityService {
 
         String typeRents;
         do {
-            System.out.println("Input typeRents(Year/Month/Day/Hour): ");
+            System.out.println("Input typeRents(year/month/day/hour): ");
             typeRents = scanner.nextLine();
         } while (!RegexData.checkTypeRent(typeRents));
 
@@ -283,9 +280,17 @@ public class FacilityServiceImpl implements FacilityService {
         Villa villa = new Villa(id, name, area, price, amount, typeRents, standardRoom, areaPool, numberOfFloors);
         facilityIntegerMap.put(villa, 0);
         System.out.println("Add " + villa + " successful");
-        ReadAndWriter.write((Collection) facilityIntegerMap, pathFileVilla);
+        writeFacility("SVVL",pathFileVilla);
     }
-
+    private void writeFacility(String type, String path) {
+        List<Facility> facilityList = new ArrayList<>();
+        for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
+            if (type.equals(facilityIntegerEntry.getKey().getId().substring(0, 4))) {
+                facilityList.add(facilityIntegerEntry.getKey());
+            }
+        }
+        ReadAndWriter.write(facilityList,path);
+    }
     public Facility searchById(String id) {
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
             if (id.equals(facilityIntegerEntry.getKey().getId())) {
