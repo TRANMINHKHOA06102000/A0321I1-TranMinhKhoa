@@ -55,6 +55,13 @@ public class BookingServiceImpl implements BookingService {
         bookingSet.add(booking);
         System.out.println("Add " + booking + " successful");
         ReadAndWriter.write(bookingSet, pathFile);
+
+        //số lần sử dụng của dịch vụ tăng 1
+        for (Map.Entry<Facility,Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()){
+            if (facilityIntegerEntry.getKey().getName().equals(nameServiceFacility)){
+                facilityIntegerMap.put(facilityIntegerEntry.getKey(),facilityIntegerEntry.getValue() + 1);
+            }
+        }
     }
 
     public static Customer chooseCustomer() {
