@@ -26,6 +26,11 @@ public class BookingServiceImpl implements BookingService {
                 "Vip", 1000, 10), 0);
         facilityIntegerMap.put(new Villa("2", "Villa2", 6000, 4000, 3000, "Theo Tháng",
                 "Vip", 2000, 20), 0);
+
+        bookingSet.add(new Booking(1, "07/10/2021", "20/10/2021",
+                "001","SVVL-1111","Villa"));
+        bookingSet.add(new Booking(2, "07/12/2022", "10/12/2021",
+                "002","SVVL-1112","Villa"));
     }
 
     @Override
@@ -41,7 +46,7 @@ public class BookingServiceImpl implements BookingService {
     public void addNew() {
         int idBooking;
         System.out.println("Input id: ");
-        idBooking= Integer.parseInt(scanner.nextLine());
+        idBooking = Integer.parseInt(scanner.nextLine());
         Customer idCustomer = chooseCustomer();
         Facility nameServiceFacility = chooseFacility();
         System.out.println("Input startDay booking: ");
@@ -57,11 +62,13 @@ public class BookingServiceImpl implements BookingService {
         ReadAndWriter.write(bookingSet, pathFile);
 
         //số lần sử dụng của dịch vụ tăng 1
-        for (Map.Entry<Facility,Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()){
-            if (facilityIntegerEntry.getKey().getName().equals(nameServiceFacility)){
-                facilityIntegerMap.put(facilityIntegerEntry.getKey(),facilityIntegerEntry.getValue() + 1);
+        /*for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
+            if (facilityIntegerEntry.getKey().getName().equals(nameServiceFacility)) {
+                facilityIntegerMap.put(facilityIntegerEntry.getKey(), facilityIntegerEntry.getValue() + 1);
             }
-        }
+        }*/
+        FacilityServiceImpl facilityService=new FacilityServiceImpl();
+        facilityService.updateRentedValue(nameServiceFacility.getId());
     }
 
     public static Customer chooseCustomer() {
@@ -89,7 +96,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     public static Facility chooseFacility() {
-        System.out.println("---List Service");
+        System.out.println("---List Service---");
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
             System.out.println(facilityIntegerEntry.getKey().toString());
         }

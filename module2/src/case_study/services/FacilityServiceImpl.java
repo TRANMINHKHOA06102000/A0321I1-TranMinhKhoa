@@ -129,7 +129,7 @@ public class FacilityServiceImpl implements FacilityService {
         Room room = new Room(id, name, area, price, amount, typeRents, freeService);
         facilityIntegerMap.put(room, 0);
         System.out.println("Add " + room + " successful");
-        writeFacility("SVRO",pathFileRoom);
+        writeFacility("SVRO", pathFileRoom);
     }
 
     @Override
@@ -200,7 +200,7 @@ public class FacilityServiceImpl implements FacilityService {
         House house = new House(id, name, area, price, amount, typeRents, standardRoom, numberOfFloors);
         facilityIntegerMap.put(house, 0);
         System.out.println("Add " + house + " successful");
-        writeFacility("SVHO",pathFileHouse);
+        writeFacility("SVHO", pathFileHouse);
     }
 
     @Override
@@ -280,8 +280,9 @@ public class FacilityServiceImpl implements FacilityService {
         Villa villa = new Villa(id, name, area, price, amount, typeRents, standardRoom, areaPool, numberOfFloors);
         facilityIntegerMap.put(villa, 0);
         System.out.println("Add " + villa + " successful");
-        writeFacility("SVVL",pathFileVilla);
+        writeFacility("SVVL", pathFileVilla);
     }
+
     private void writeFacility(String type, String path) {
         List<Facility> facilityList = new ArrayList<>();
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
@@ -289,8 +290,9 @@ public class FacilityServiceImpl implements FacilityService {
                 facilityList.add(facilityIntegerEntry.getKey());
             }
         }
-        ReadAndWriter.write(facilityList,path);
+        ReadAndWriter.write(facilityList, path);
     }
+
     public Facility searchById(String id) {
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
             if (id.equals(facilityIntegerEntry.getKey().getId())) {
@@ -313,6 +315,14 @@ public class FacilityServiceImpl implements FacilityService {
         for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
             if (facilityIntegerEntry.getValue() == 5) {
                 System.out.println("Service " + facilityIntegerEntry.getKey() + "number of times rented" + facilityIntegerEntry.getValue());
+            }
+        }
+    }
+
+    public void updateRentedValue(String idService) {
+        for (Map.Entry<Facility, Integer> facility : facilityIntegerMap.entrySet()) {
+            if (idService.equals(facility.getKey().getId())) {
+                facility.setValue(facility.getValue() + 1);
             }
         }
     }
