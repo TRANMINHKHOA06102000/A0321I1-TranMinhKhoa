@@ -31,7 +31,7 @@ public class RegexData {
         return str.matches(regex);
     }
 
-    public static boolean checkAreaAndAreaPool(int area) {
+/*    public static boolean checkAreaAndAreaPool(int area) {
         int areaNum;
         try {
             areaNum = area;
@@ -39,8 +39,17 @@ public class RegexData {
         } catch (Exception Ex) {
             return false;
         }
+    }*/
+    public static boolean checkAreaOrAreaPool(int area){
+        String area1= String.valueOf(area);
+        regex = "^([3-9]\\d|[1-9]\\d{2,})";
+        return area1.matches(regex);
     }
-
+   /* public static boolean checkPrice(double price){
+        String price1= String.valueOf(price);
+        regex = "^([1-9])[0-9]*$";
+        return price1.matches(regex);
+    }*/
     public static boolean checkPrice(double price) {
         double priceNum;
         try {
@@ -50,7 +59,11 @@ public class RegexData {
             return false;
         }
     }
-
+    /*public static boolean checkAmount(int amount){
+        String amount1= String.valueOf(amount);
+        regex = "^[1-9]|([1][0-9])|(20)$";
+        return amount1.matches(regex);
+    }*/
     public static boolean checkAmount(int amount) {
         int amountNum;
         try {
@@ -101,7 +114,7 @@ public class RegexData {
         }
         return temp;
     }
- /*   public static String regexString(String temp, String regex, String error) {
+    public static String regexString(String temp, String regex, String error) {
         boolean check = true;
         do {
             if (temp.matches(regex)) {
@@ -112,5 +125,5 @@ public class RegexData {
             }
         } while (check);
         return temp;
-    }*/
+    }
 }

@@ -30,4 +30,24 @@ public class BookingComparator implements Comparator<Booking>, Serializable {
             }
         }
     }
+   /* @Override
+    public int compare(KhachHang customer1, KhachHang customer2) {
+        int result = customer1.getTenKH().compareTo(customer2.getTenKH());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate ngaySinh1 = LocalDate.parse(customer1.getNgaysinh(), formatter);
+        LocalDate ngaySinh2 = LocalDate.parse(customer2.getNgaysinh(), formatter);
+        if (result > 0) {
+            return 1;
+        } else if (result < 0) {
+            return -1;
+        } else {
+            if (ngaySinh1.compareTo(ngaySinh2) > 0) {
+                return 1;
+            } else if (ngaySinh1.compareTo(ngaySinh2) < 0) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
+    }*/
 }

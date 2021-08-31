@@ -7,6 +7,7 @@ import case_study.utils.RegexData;
 import java.util.*;
 
 public class FacilityServiceImpl implements FacilityService {
+    private static final String  REGEX_AMOUNT="^[1-9]|([1][0-9])|(20)$";
     private static Map<Facility, Integer> facilityIntegerMap;
     static Scanner scanner = new Scanner(System.in);
     String pathFileVilla = "D:\\A0321I1-TranMinhKhoa\\module2\\src\\case_study\\data\\villa.csv";
@@ -95,7 +96,7 @@ public class FacilityServiceImpl implements FacilityService {
             } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        } while (!RegexData.checkAreaAndAreaPool(area));
+        } while (!RegexData.checkAreaOrAreaPool(area));
 
         double price = 0;
         do {
@@ -157,7 +158,7 @@ public class FacilityServiceImpl implements FacilityService {
             } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        } while (!RegexData.checkAreaAndAreaPool(area));
+        } while (!RegexData.checkAreaOrAreaPool(area));
 
         double price = 0;
         do {
@@ -169,7 +170,7 @@ public class FacilityServiceImpl implements FacilityService {
             }
         } while (!RegexData.checkPrice(price));
 
-        int amount = 0;
+       /* int amount = 0;
         do {
             try {
                 System.out.println("Input amount: ");
@@ -177,8 +178,9 @@ public class FacilityServiceImpl implements FacilityService {
             } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        } while (!RegexData.checkAmount(amount));
-
+        } while (!RegexData.checkAmount(amount));*/
+        System.out.println("Input amount: ");
+        int amount = Integer.parseInt(amountRegex());
         String typeRents;
         do {
             System.out.println("Input typeRents(year/month/day/hour): ");
@@ -201,6 +203,9 @@ public class FacilityServiceImpl implements FacilityService {
         facilityIntegerMap.put(house, 0);
         System.out.println("Add " + house + " successful");
         writeFacility("SVHO", pathFileHouse);
+    }
+    private String amountRegex(){
+        return RegexData.regexString(scanner.nextLine(),REGEX_AMOUNT,"error");
     }
 
     @Override
@@ -230,7 +235,7 @@ public class FacilityServiceImpl implements FacilityService {
             } catch (NumberFormatException ex) {
                 System.err.println(ex.getMessage());
             }
-        } while (!RegexData.checkAreaAndAreaPool(area));
+        } while (!RegexData.checkAreaOrAreaPool(area));
 
         double price = 0;
         do {
@@ -268,7 +273,7 @@ public class FacilityServiceImpl implements FacilityService {
         do {
             System.out.println("Input areaPool: ");
             areaPool = Integer.parseInt(scanner.nextLine());
-        } while (!RegexData.checkAreaAndAreaPool(areaPool));
+        } while (!RegexData.checkAreaOrAreaPool(areaPool));
 
 
         int numberOfFloors;
