@@ -64,6 +64,7 @@ public class FuramaController {
         System.out.println("3. Edit employee ");
         System.out.println("4. Return main menu");
         System.out.println("5. Exit");
+        System.out.println("6. Delete");
         System.out.println("------------------------------");
         System.out.print("Your choose: ");
         int choose = 0;
@@ -95,6 +96,11 @@ public class FuramaController {
             }
             case 5: {
                 System.exit(0);
+                break;
+            }
+            case 6: {
+                employeeService.delete();
+                employee();
                 break;
             }
             default: {
